@@ -12,7 +12,21 @@ module.exports = {
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'comma-dangle': ['error', 'always-multiline'],
+    'semi': ['error', 'always'],
+    'vue/html-self-closing': [
+      'error',
+      {
+        'html': {
+          'void': 'always',
+          'normal': 'never',
+          'component': 'always',
+          },
+        'svg': 'always',
+        'math': 'always',
+      }
+    ],
   },
   overrides: [
     {
