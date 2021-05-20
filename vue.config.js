@@ -4,13 +4,9 @@ module.exports = {
   chainWebpack: (config) => {
     config.resolve.alias
       .set('@', path.resolve(__dirname, 'src/'))
-      .set('@components', path.resolve(__dirname, 'src/components'))
+      .set('@core', path.resolve(__dirname, 'src/core'))
+      .set('@shared', path.resolve(__dirname, 'src/shared'))
       .set('@modules', path.resolve(__dirname, 'src/modules'))
-      .set('@utils', path.resolve(__dirname, 'src/utils'))
-      .set('@router', path.resolve(__dirname, 'src/router'))
-      .set('@store', path.resolve(__dirname, 'src/store'))
-      .set('@views', path.resolve(__dirname, 'src/views'))
-      .set('@scss', path.resolve(__dirname, 'src/scss'))
       .set('@images', path.resolve(__dirname, 'src/assets/images'));
   },
   css: {

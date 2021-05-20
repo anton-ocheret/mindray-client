@@ -1,9 +1,9 @@
 import Vue from 'vue';
 
-import router from '@router';
-import store from '@store';
+import router from '@core/router';
+import store from '@core/store';
 
-import App from '@/app.vue';
+import App from '@core/app';
 
 import './registerServiceWorker';
 
