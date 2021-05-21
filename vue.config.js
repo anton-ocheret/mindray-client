@@ -7,6 +7,7 @@ module.exports = {
       .set('@core', path.resolve(__dirname, 'src/core'))
       .set('@shared', path.resolve(__dirname, 'src/shared'))
       .set('@modules', path.resolve(__dirname, 'src/modules'))
+      .set('@scss', path.resolve(__dirname, 'src/assets/scss'))
       .set('@images', path.resolve(__dirname, 'src/assets/images'));
   },
   css: {
