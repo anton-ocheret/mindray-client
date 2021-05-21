@@ -7,13 +7,9 @@
 </template>
 
 <script>
+  import '@scss/index.scss';
+
   export default {
     name: 'app',
   };
 </script>
-
-<style lang="scss">
-  #app {
-    color: red;
-  }
-</style>

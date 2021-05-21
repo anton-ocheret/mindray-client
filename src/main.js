@@ -5,7 +5,7 @@ import store from '@core/store';
 
 import App from '@core/app';
 
-import './registerServiceWorker';
+import '@/registerServiceWorker';
 
 Vue.config.productionTip = false;
 
