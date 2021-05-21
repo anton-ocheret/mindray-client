@@ -1,15 +1,12 @@
 import { ROUTE_NAMES } from '@shared/constants';
+import { configureDefaultLayout } from '@shared/utils';
 
-const LayoutDefault = () => import(/* webpackChunkName: 'layout-default' */ '@shared/components/layouts/default');
 const Quiz = () => import(/* webpackChunkName: 'quiz' */ '@modules/quiz/views/quiz');
 
 export default [
-  {
-    path: '/quiz',
+  configureDefaultLayout({
     name: ROUTE_NAMES.QUIZ,
+    path: '/quiz',
     component: Quiz,
-    meta: {
-      layout: LayoutDefault,
-    },
-  },
+  }),
 ];
