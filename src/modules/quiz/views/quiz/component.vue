@@ -1,5 +1,5 @@
 <template>
-  <h1>Awesome quiz!</h1>
+  <div></div>
 </template>
 
 <script>
