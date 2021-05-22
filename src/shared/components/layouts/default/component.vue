@@ -1,7 +1,9 @@
 <template>
   <div class="layout-default">
     <the-header />
-    <slot></slot>
+    <main class="main">
+      <slot></slot>
+    </main>
   </div>
 </template>
 
@@ -16,9 +18,15 @@
 
 <style lang='scss' scoped>
   .layout-default {
-    min-height: 100vh;
     display: flex;
+    min-height: 100vh;
     flex-direction: column;
     background-color: $mercury;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
 </style>

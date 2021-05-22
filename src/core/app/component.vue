@@ -7,8 +7,6 @@
 </template>
 
 <script>
-  import '@scss/index.scss';
-
   export default {
     name: 'app',
     computed: {
