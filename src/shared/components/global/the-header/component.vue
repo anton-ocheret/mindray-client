@@ -1,8 +1,8 @@
 <template>
   <header class="app-header">
     <router-link v-hover-rotate to="/" class="logo">
-      <img :src="require('@images/icons/logo-outer.svg')" />
-      <img class="hover-rotate logo-inner" :src="require('@images/icons/logo-inner.svg')" />
+      <img :src="require('@images/icons/logo-outer.svg')" alt="" />
+      <img class="hover-rotate logo-inner" :src="require('@images/icons/logo-inner.svg')" alt="" />
     </router-link>
 
     <div class="app-header__center">

@@ -2,7 +2,6 @@ import { gsap } from 'gsap/all';
 
 export default {
   bind(el, { value = { cls: 'hover-rotate', rotation: '+=30' } }) {
-    console.log(value);
     el.__mouseHoverHandler__ = () => {
       gsap.to(`.${value.cls}`, {
         rotation: value.rotation,

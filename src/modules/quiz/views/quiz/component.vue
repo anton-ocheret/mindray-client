@@ -1,6 +1,6 @@
 <template>
   <div class="quiz">
-    <img v-move-with-cursor :src="require('@images/icons/blob-cursor.svg')" />
+    <img v-move-with-cursor :src="require('@images/icons/blob-cursor.svg')" alt="" />
   </div>
 </template>
 

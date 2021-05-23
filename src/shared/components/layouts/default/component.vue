@@ -4,15 +4,20 @@
     <main class="main">
       <slot></slot>
     </main>
+    <the-footer />
   </div>
 </template>
 
 <script>
   import TheHeader from '@shared/components/global/the-header';
+  import TheFooter from '@shared/components/global/the-footer';
 
   export default {
     name: 'layout-default',
-    components: { TheHeader },
+    components: {
+      TheHeader,
+      TheFooter,
+    },
   };
 </script>
 
