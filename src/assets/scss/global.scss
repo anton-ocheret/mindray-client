@@ -7,6 +7,10 @@ html {
   font-size: 62.5%;
 }
 
+p {
+  margin: 0;
+}
+
 body {
   font-size: 1.6rem;
   font-family: $font-family;
@@ -52,6 +56,68 @@ a {
   font-size: $font-size-md;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .app-text--lg {
-  font-size: $font-size-lg;
+  font-size: $font-size-sm;
+
+  @media(min-width: $md) {
+    font-size: $font-size-lg;
+  }
+}
+
+.d-sm-block {
+  display: none;
+
+  @media(min-width: $sm) {
+    display: block !important;
+  }
+}
+
+.d-md-block {
+  display: none;
+
+  @media(min-width: $md) {
+    display: block !important;
+  }
+}
+
+.d-lg-block {
+  display: none;
+
+  @media(min-width: $lg) {
+    display: block !important;
+  }
+}
+
+.d-sm-flex {
+  display: none;
+
+  @media(min-width: $sm) {
+    display: flex !important;
+  }
+}
+
+.d-md-flex {
+  display: none;
+
+  @media(min-width: $md) {
+    display: flex !important;
+  }
+}
+
+.d-lg-flex {
+  display: none;
+
+  @media(min-width: $lg) {
+    display: flex !important;
+  }
+}
+
+.d-md-none {
+  @media(max-width: $md-max) {
+    display: none !important;
+  }
 }

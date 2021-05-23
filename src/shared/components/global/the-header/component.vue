@@ -1,7 +1,8 @@
 <template>
   <header class="app-header">
-    <router-link to="/" class="logo">
-      <img :src="require('@images/icons/logo.svg')" />
+    <router-link v-hover-rotate to="/" class="logo">
+      <img :src="require('@images/icons/logo-outer.svg')" alt="" />
+      <img class="hover-rotate logo-inner" :src="require('@images/icons/logo-inner.svg')" alt="" />
     </router-link>
 
     <div class="app-header__center">
@@ -17,8 +18,12 @@
 </template>
 
 <script>
+import { hoverRotate } from '@shared/directives';
 export default {
   name: 'the-header',
+  directives: {
+    hoverRotate,
+  },
 };
 </script>
 
@@ -54,9 +59,25 @@ export default {
 
   .logo {
     width: 40px;
+    height: 40px;
+    position: relative;
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
 
     @media(min-width: $sm) {
-      width: auto;
+      width: 60px;
+      height: 60px;
+      position: relative;
     }
+  }
+
+  .logo-inner {
+    width: 70%;
+    height: 70%;
   }
 </style>
