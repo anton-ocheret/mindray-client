@@ -48,13 +48,15 @@
 
 <style lang="scss">
   html.footer-opened {
-    .app-footer .content {
-      transform: translateZ(0) !important; 
-    }
-
-    .app-footer .background {
-      opacity: .7;
-      pointer-events: auto;
+    .app-footer {
+      .content {
+        transform: translateZ(0) !important; 
+      }
+      
+      .background {
+        opacity: .7;
+        pointer-events: auto;
+      }
     }
   }
 </style>
@@ -127,11 +129,11 @@
   }
 
   .content-inner {
-    padding: 0 35px 40px;
+    padding: 0 $padding-mobile-x 25px;
     background-color: $white;
 
     @media(min-width: $md) {
-      padding: 0 30px 25px;
+      padding: 0 $padding-desktop-x 40px;
     }
   }
 

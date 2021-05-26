@@ -1,17 +1,35 @@
 <template>
   <div class="quiz-step">
-    {{ id }}
+    <div class="content">
+      <quiz-step-heading :heading="step.heading" />
+    </div>
   </div>
 </template>
 
 <script>
+  import QuizStepHeading from '@modules/quiz/components/quiz-step-heading';
+
   export default {
     name: 'quiz-step',
+    components: { QuizStepHeading },
     props: {
-      id: {
-        type: String,
+      step: {
+        type: Object,
         required: true,
       },
     },
   };
 </script>
+
+<style lang="scss">
+  .quiz-step {
+    position: relative;
+    display: flex;
+    width: 100%;
+
+    @media(min-width: $md) {
+      max-width: 990px;
+      width: calc(100% - 350px);
+    }
+  }
+</style>

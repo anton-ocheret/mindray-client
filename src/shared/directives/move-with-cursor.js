@@ -3,6 +3,7 @@ import { gsap } from 'gsap/all';
 export default {
   bind(el) {
     el.style.position = 'fixed';
+    el.style.zIndex = 0;
     el.__posX__ = 0;
     el.__posY__ = 0;
     el.__mouseX__ = 0;

@@ -36,11 +36,11 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 30px;
+    padding: 25px $padding-mobile-x;
     z-index: 1;
 
     @media(min-width: $sm) {
-      padding: 30px 35px;
+      padding: 30px $padding-desktop-x;
     }
   }
 
