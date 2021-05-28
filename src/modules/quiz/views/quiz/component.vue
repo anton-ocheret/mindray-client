@@ -1,14 +1,14 @@
 <template>
   <div class="quiz">
-    <div class="quiz__content">
-      <go-back-button />
-      <router-view :step="quiz.steps[quiz.navigation.first]" />
-    </div>
     <img
       :src="require('@images/icons/blob-cursor.svg')"
       v-move-with-cursor
       alt=""
     />
+    <div class="quiz-content">
+      <go-back-button />
+      <router-view :step="quiz.steps[quiz.navigation.first]" />
+    </div>
   </div>
 </template>
 
@@ -55,7 +55,7 @@
     }
   }
 
-  .quiz__content {
+  .quiz-content {
     width: 100%;
     display: flex;
     justify-content: center;

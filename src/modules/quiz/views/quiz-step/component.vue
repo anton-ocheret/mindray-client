@@ -1,7 +1,10 @@
 <template>
   <div class="quiz-step">
     <div class="content">
-      <quiz-step-heading :heading="step.heading" />
+      <quiz-step-heading
+        class="text-center"
+        :heading="step.heading"
+      />
     </div>
   </div>
 </template>
@@ -21,7 +24,7 @@
   };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .quiz-step {
     position: relative;
     display: flex;

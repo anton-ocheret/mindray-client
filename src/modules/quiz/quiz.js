@@ -13,7 +13,7 @@ export default {
           type: 'text' || 'modal',
           content: {
             image: 'url',
-            text: ['Text', 'Some Another Text'],
+            paragraphs: ['Text', 'Some Another Text'],
           },
         },
       },
@@ -27,7 +27,7 @@ export default {
               type: 'text' || 'modal',
               content: {
                 image: 'url',
-                text: ['Text', 'Some Another Text'],
+                paragraphs: ['Text', 'Some Another Text'],
               },
             },
           },
