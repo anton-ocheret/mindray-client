@@ -1,8 +1,8 @@
 <template>
   <h1
-    v-hint:text="{
-      self: computedSelf,
+    v-hint:[heading.hint.type]="{
       execute: Boolean(heading.hint),
+      propName: 'hintActivatorLeftPosition'
     }"
     class="app-heading--lg"
     v-bind="$attrs"
@@ -16,9 +16,11 @@
     <template v-else>
       {{ heading.text }}
     </template>
-
     <template v-if="heading.hint">
-      <quiz-step-hint :hint="heading.hint" />
+      <quiz-step-hint
+        :hint="heading.hint"
+        :left-position="hintActivatorLeftPosition"
+      />
     </template>
   </h1>
 </template>
@@ -41,13 +43,13 @@
         required: true,
       },
     },
+    data: () => ({
+      hintActivatorLeftPosition: 0,
+    }),
     computed: {
       computedHeadingWordsArray() {
         const { text, hint } = this.heading;
         return hint && text.split(' ');
-      },
-      computedSelf() {
-        return this;
       },
     },
   };
