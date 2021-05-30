@@ -4,7 +4,7 @@
       execute: Boolean(heading.hint),
       propName: 'hintActivatorLeftPosition'
     }"
-    class="app-heading--lg"
+    class="heading app-heading--lg text-center relative"
     v-bind="$attrs"
     v-on="$listeners"
   >
@@ -16,6 +16,7 @@
     <template v-else>
       {{ heading.text }}
     </template>
+
     <template v-if="heading.hint">
       <quiz-step-hint
         :hint="heading.hint"
@@ -55,4 +56,12 @@
   };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .heading {
+    margin-bottom: 10px;
+
+    @media(min-width: $md) {
+      margin-bottom: 20px;
+    }
+  }
+</style>

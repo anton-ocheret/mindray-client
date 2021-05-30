@@ -15,7 +15,6 @@ export default {
     if (!bindings.value.execute) return;
     const childHtmlElements = node.children.filter(getWithTag);
     el.__updatePositionValue__ = () => {
-      console.log('here');
       const topRightElement = getTopRightElementPosition(childHtmlElements);
       const { offsetWidth, offsetLeft } = topRightElement.elm;
       const hintActivatorLeftPositon = offsetLeft + offsetWidth;
@@ -25,7 +24,7 @@ export default {
     el.__debaoncedUpdatePositionValue__ = debounce(el.__updatePositionValue__, DEBOUNCE_TIMEOUT);
 
     window.addEventListener('resize', el.__debaoncedUpdatePositionValue__);
-    el.__updatePositionValue__();
+    setTimeout(() => el.__updatePositionValue__(), DEBOUNCE_TIMEOUT / 20);
   },
   unbind(el) {
     document.removeEventListener('resize', el.__debaoncedUpdatePositionValue__);

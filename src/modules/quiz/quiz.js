@@ -6,7 +6,6 @@ export default {
   steps: {
     '1': {
       id: '1',
-      type: 'buttons-list',
       heading: {
         text: 'Пожалуйста, напишите свой вопрос и специалист свяжется с Вами в ближайшее время',
         hint: {
@@ -18,27 +17,30 @@ export default {
         },
       },
       content: {
-        '1': {
-          id: '1',
-          next: 'next question id',
-          content: {
-            text: 'button text',
-            hint: {
-              type: 'text' || 'modal',
-              content: {
-                image: 'url',
-                paragraphs: ['Text', 'Some Another Text'],
+        type: 'buttons',
+        data: {
+          '1': {
+            id: '1',
+            next: 'next question id',
+            content: {
+              text: 'Отдел сервиса',
+              hint: {
+                type: 'text' || 'modal',
+                content: {
+                  image: 'url',
+                  paragraphs: ['Text', 'Some Another Text'],
+                },
               },
             },
           },
-        },
-        '2': {
-          id: '2',
-          next: 'next question id',
-          content: {
-            text: 'button 2 text',
-            hint: {
-              type: 'text' || 'modal',
+          '2': {
+            id: '2',
+            next: 'next question id',
+            content: {
+              text: 'Отдел продаж',
+              hint: {
+                type: 'text' || 'modal',
+              },
             },
           },
         },

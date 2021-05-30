@@ -1,5 +1,5 @@
 <template>
-  <router-link class="back" :to="{ name }">
+  <router-link class="back d-md-flex" :to="{ name }">
     <img :src="require('@images/icons/icon-back.svg')" class="icon" alt="" />
     <span class="app-text app-text--sm">
       Назад

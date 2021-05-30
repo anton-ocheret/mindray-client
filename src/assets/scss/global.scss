@@ -68,6 +68,14 @@ button {
   font-size: $font-size-md;
 }
 
+.app-text--lg {
+  font-size: $font-size-sm;
+
+  @media(min-width: $lg) {
+    font-size: $font-size-lg;
+  }
+}
+
 .text-center {
   text-align: center;
 }
@@ -79,14 +87,6 @@ button {
 
   @media(min-width: $md) {
     font-size: $heading-font-size-lg;
-  }
-}
-
-.app-text--lg {
-  font-size: $font-size-sm;
-
-  @media(min-width: $md) {
-    font-size: $font-size-lg;
   }
 }
 
@@ -142,4 +142,8 @@ button {
   @media(max-width: $md-max) {
     display: none !important;
   }
+}
+
+.relative {
+  position: relative;
 }

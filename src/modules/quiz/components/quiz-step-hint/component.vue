@@ -48,12 +48,19 @@ export default {
     display: flex;
     position: absolute;
     top: 0;
-    transform: translateY(-50%);
+    transform: translate(0, -50%);
     z-index: 2;
   }
 
   .activator {
+    width: 14px;
+    height: 14px;
     cursor: pointer;
+
+    @media(min-width: $md) {
+      width: auto;
+      height: auto;
+    }
   }
 
   .content-text {
