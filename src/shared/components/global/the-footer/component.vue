@@ -26,7 +26,38 @@
           </div>
         </div>
         <div class="social">
-          Кнопки
+          <base-button
+            class="social-link app-text"
+            kind="inverse"
+            size="small"
+          >
+            <img class="social-link-icon" :src="require('@images/icons/icon-whatsapp.svg')" alt="" />
+            <span>WhatsApp</span>
+          </base-button>
+          <base-button
+            class="social-link"
+            kind="inverse"
+            size="small"
+          >
+            <img class="social-link-icon" :src="require('@images/icons/icon-telegram.svg')" alt="" />
+            Telegram
+          </base-button>
+          <base-button
+            class="social-link"
+            kind="inverse"
+            size="small"
+          >
+            <img class="social-link-icon" :src="require('@images/icons/icon-viber.svg')" alt="" />
+            Viber
+          </base-button>
+          <base-button
+            class="social-link"
+            kind="inverse"
+            size="small"
+          >
+            <img class="social-link-icon" :src="require('@images/icons/icon-chat.svg')" alt="" />
+            Online-чат
+          </base-button>
         </div>
       </div>
     </div>
@@ -34,11 +65,15 @@
 </template>
 
 <script>
+  import BaseButton from '@shared/components/base/button';
   import toggle from '@shared/components/global/the-footer/directives';
   import { hoverRotate } from '@shared/directives';
 
   export default {
     name: 'the-footer',
+    components: {
+      BaseButton,
+    },
     directives: {
       toggle,
       hoverRotate,
@@ -178,11 +213,32 @@
   }
 
   .social {
-    margin-top: 30px;
+    margin-top: 55px;
+    margin-left: -14px;
+    margin-right: -14px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
     @media(min-width: $md) {
-      margin-top: 80px;
+      margin-top: 70px;
+      margin-left: auto;
+      margin-right: auto;
     }
+  }
+
+  .social-link {
+    margin: 7px;
+    width: calc(50% - 14px);
+
+    @media(min-width: $sm) {
+      width: auto;
+      margin: 10px;
+    }
+  }
+
+  .social-link-icon {
+    margin-right: 10px;
   }
 
   .logo {

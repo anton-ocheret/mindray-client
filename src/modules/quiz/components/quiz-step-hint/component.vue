@@ -1,6 +1,7 @@
 <template>
   <div
     class="hint"
+    :class="[position]"
     :style="{ left: `${leftPosition}px` }"
   >
     <img
@@ -36,6 +37,10 @@ export default {
       type: Number,
       default: 0,
     },
+    position: {
+      type: String,
+      default: 'absolute',
+    },
   },
   data: () => ({
     isHintContentVisible: false,
@@ -46,10 +51,17 @@ export default {
 <style lang="scss" scoped>
   .hint {
     display: flex;
-    position: absolute;
     top: 0;
-    transform: translate(0, -50%);
     z-index: 2;
+  }
+
+  .hint.absolute {
+    position: absolute;
+    transform: translate(0, -50%);
+  }
+
+  .hint.relative {
+    position: relative;
   }
 
   .activator {

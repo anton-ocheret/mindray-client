@@ -38,9 +38,6 @@ export default {
             next: 'next question id',
             content: {
               text: 'Отдел продаж',
-              hint: {
-                type: 'text' || 'modal',
-              },
             },
           },
         },
