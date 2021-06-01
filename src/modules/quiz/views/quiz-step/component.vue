@@ -22,6 +22,9 @@
         type: Object,
         required: true,
       },
+      id: {
+        type: String,
+      },
     },
   };
 </script>

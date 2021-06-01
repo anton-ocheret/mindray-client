@@ -21,12 +21,12 @@ export default {
       setDynamicProp(node.context, bindings.value.propName, hintActivatorLeftPositon);
     };
 
-    el.__debaoncedUpdatePositionValue__ = debounce(el.__updatePositionValue__, DEBOUNCE_TIMEOUT);
+    el.__debouncedUpdatePositionValue__ = debounce(el.__updatePositionValue__, DEBOUNCE_TIMEOUT);
 
-    window.addEventListener('resize', el.__debaoncedUpdatePositionValue__);
+    window.addEventListener('resize', el.__debouncedUpdatePositionValue__);
     setTimeout(() => el.__updatePositionValue__(), DEBOUNCE_TIMEOUT / 20);
   },
   unbind(el) {
-    document.removeEventListener('resize', el.__debaoncedUpdatePositionValue__);
+    window.removeEventListener('resize', el.__debouncedUpdatePositionValue__);
   },
 };
