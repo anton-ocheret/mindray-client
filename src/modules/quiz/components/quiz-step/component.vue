@@ -3,17 +3,20 @@
     <div class="content-wrapper">
       <quiz-step-heading :heading="step.heading" />
       <quiz-step-content :content="step.content" />
+      <quiz-step-navigation :navigation="step.navigation" />
     </div>
   </div>
 </template>
 
 <script>
+  import QuizStepNavigation from '@modules/quiz/components/quiz-step-navigation';
   import QuizStepHeading from '@modules/quiz/components/quiz-step-heading';
   import QuizStepContent from '@modules/quiz/components/quiz-step-content';
 
   export default {
     name: 'quiz-step',
     components: {
+      QuizStepNavigation,
       QuizStepHeading,
       QuizStepContent,
     },

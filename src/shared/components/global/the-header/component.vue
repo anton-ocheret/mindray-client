@@ -10,7 +10,7 @@
         Техподдержка
       </span>
 
-      <a href="tel:+7 (499) 495-48-21" class="app-text app-text--lg">
+      <a href="tel:+7 (499) 495-48-21" class="app-text app-text--lg link">
         +7 (499) 495-48-21
       </a>
     </div>
@@ -27,7 +27,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .app-header {
     position: fixed;
     width: 100%;
@@ -79,5 +79,24 @@ export default {
   .logo-inner {
     width: 70%;
     height: 70%;
+  }
+
+  .link {
+    position: relative;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      height: 1px;
+      width: 0;
+      background-color: currentColor;
+      transition: width .25s ease-in-out;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
   }
 </style>

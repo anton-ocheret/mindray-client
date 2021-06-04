@@ -41,9 +41,20 @@
     }
 
     &.inverse {
-      color: white;
-      background-color: black;
+      color: $white;
+      background-color: $black;
       padding: 12px 18px;
+    }
+
+    &.bordered {
+      color: $black;
+      border: 1px solid $black;
+      background-color: transparent;
+    }
+
+    &.link {
+      box-shadow: none;
+      padding: 0;
     }
 
     &.medium {
@@ -53,6 +64,14 @@
       @media(min-width: $sm) {
         padding: 18px 40px;
       }
+    }
+
+    &.small {
+      padding: 13px 35px;
+    }
+
+    &.smallest {
+      padding: 0;
     }
   }
 </style>

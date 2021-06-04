@@ -8,9 +8,9 @@
         </div>
         <div class="nav">
           <div class="part d-md-none">
-            <a href="#" class="link footer-link app-text app-text--sm">
+            <a href="#" class="footer-link app-text app-text--sm">
               <img class="link-icon" :src="require('@images/icons/icon-education.svg')" alt="" />
-              Образование
+              <span class="footer-link-text">Образование</span>
             </a>
           </div>
           
@@ -19,9 +19,9 @@
           </div>
 
           <div class="part d-md-none">
-            <a href="#" class="link footer-link app-text app-text--sm">
+            <a href="#" class="footer-link app-text app-text--sm">
               <img class="link-icon" :src="require('@images/icons/icon-user.svg')" alt="" />
-              Войти
+              <span class="footer-link-text">Войти</span>
             </a>
           </div>
         </div>
@@ -121,6 +121,31 @@
     opacity: 0;
     transition: opacity .6s cubic-bezier(.35, .755, .42, .95);
     cursor: pointer;
+  }
+
+  .footer-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .footer-link-text:after {
+      content: '';
+      position: absolute;
+      bottom: 1px;
+      left: 0;
+      height: 1px;
+      width: 0;
+      background-color: currentColor;
+      transition: width .25s ease-in-out;
+    }
+
+    &:hover .footer-link-text:after {
+      width: 100%;
+    }
+  }
+
+  .footer-link-text {
+    position: relative;
   }
 
   .content {
@@ -251,6 +276,13 @@
     top: 16px;
     left: 50%;
     transform: translateX(-50%);
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
 
     @media(min-width: $md) {
       width: 60px;
