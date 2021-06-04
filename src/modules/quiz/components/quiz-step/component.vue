@@ -22,9 +22,6 @@
         type: Object,
         required: true,
       },
-      id: {
-        type: String,
-      },
     },
   };
 </script>
@@ -34,6 +31,12 @@
     position: relative;
     display: flex;
     width: 100%;
+    justify-content: center;
+    flex-grow: 1;
+    position: relative;
+    max-width: 1340px;
+    z-index: 2;
+
 
     @media(min-width: $md) {
       max-width: 990px;
@@ -43,6 +46,7 @@
 
   .content-wrapper {
     display: flex;
+    align-self: center;
     flex-direction: column;
   }
 </style>

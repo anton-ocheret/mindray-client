@@ -1,20 +1,24 @@
 <template>
-  <div class="layout-default">
-    <the-header />
-    <main class="main">
-      <slot></slot>
-    </main>
-    <the-footer />
-  </div>
+  <the-background>
+    <div class="layout-default">
+      <the-header />
+      <main class="main">
+        <slot></slot>
+      </main>
+      <the-footer />
+    </div>
+  </the-background>
 </template>
 
 <script>
+  import TheBackground from '@shared/components/global/the-background';
   import TheHeader from '@shared/components/global/the-header';
   import TheFooter from '@shared/components/global/the-footer';
 
   export default {
     name: 'layout-default',
     components: {
+      TheBackground,
       TheHeader,
       TheFooter,
     },
