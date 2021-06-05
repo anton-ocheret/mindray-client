@@ -27,10 +27,6 @@ label {
   cursor: pointer;
 }
 
-input[type="text"] {
-  font-size: inherit;
-}
-
 .app-image {
   display: flex;
   max-width: 100%;
@@ -78,6 +74,19 @@ button {
 
 .text-center {
   text-align: center;
+}
+
+::-webkit-input-placeholder {
+  color: rgba($black, .4);
+}
+::-moz-placeholder {
+  color: rgba($black, .4);
+}
+:-ms-input-placeholder {
+  color: rgba($black, .4);
+}
+:-moz-placeholder {
+  color: rgba($black, .4);
 }
 
 .app-heading--lg {
@@ -139,7 +148,9 @@ button {
 }
 
 .d-md-none {
-  @media(max-width: $md-max) {
+  display: flex;
+
+  @media(min-width: $md) {
     display: none !important;
   }
 }

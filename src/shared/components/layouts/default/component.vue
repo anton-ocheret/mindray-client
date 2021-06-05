@@ -1,13 +1,12 @@
 <template>
-  <the-background>
-    <div class="layout-default">
-      <the-header />
-      <main class="main">
-        <slot></slot>
-      </main>
-      <the-footer />
-    </div>
-  </the-background>
+  <div class="layout-default">
+    <the-background />
+    <the-header />
+    <main class="main">
+      <slot></slot>
+    </main>
+    <the-footer />
+  </div>
 </template>
 
 <script>

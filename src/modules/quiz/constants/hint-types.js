@@ -1,4 +1,4 @@
 export default {
-  TEXT: 'TEXT',
-  MODAL: 'MODAL',
+  TEXT: 'text',
+  MODAL: 'modal',
 };

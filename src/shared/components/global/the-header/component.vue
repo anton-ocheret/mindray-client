@@ -5,7 +5,7 @@
       <img class="hover-rotate logo-inner" :src="require('@images/icons/logo-inner.svg')" alt="" />
     </router-link>
 
-    <div class="app-header__center">
+    <div class="app-header__center d-md-flex">
       <span class="app-text app-text--xs">
         Техподдержка
       </span>
@@ -37,7 +37,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 25px $padding-mobile-x;
-    z-index: 1;
+    z-index: 3;
 
     @media(min-width: $sm) {
       padding: 30px $padding-desktop-x;

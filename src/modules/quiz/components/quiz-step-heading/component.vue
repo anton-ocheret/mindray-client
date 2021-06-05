@@ -1,6 +1,6 @@
 <template>
   <h1
-    v-hint:[heading.hint.type]="{
+    v-hint:[hintType]="{
       execute: Boolean(heading.hint),
       propName: 'hintActivatorLeftPosition'
     }"
@@ -51,6 +51,9 @@
       computedHeadingWordsArray() {
         const { text, hint } = this.heading;
         return hint && text.split(' ');
+      },
+      hintType() {
+        return this.heading.hint && this.heading.hint.type;
       },
     },
   };

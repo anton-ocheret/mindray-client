@@ -1,9 +1,8 @@
 <template>
-  <div class="app-background">
+  <div class="the-background">
     <img :src="require('@images/icons/blob-cursor.svg')" v-move-with-cursor alt="" />
     <img class="blob medium" :src="require('@images/icons/icon-blob-blue.svg')" alt="" />
     <img class="blob big" :src="require('@images/icons/icon-blob-green.svg')" alt="" />
-    <slot></slot>
   </div>
 </template>
 
@@ -17,7 +16,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .app-background {
+  .the-background {
     position: fixed;
     left: 0;
     top: 0;

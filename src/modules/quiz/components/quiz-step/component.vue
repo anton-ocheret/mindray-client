@@ -1,6 +1,9 @@
 <template>
   <div class="quiz-step">
-    <div class="content-wrapper">
+    <div
+      class="wrapper"
+      :class="{ 'justify-center': isStepContetnVerticallyCentered }"
+    >
       <quiz-step-heading :heading="step.heading" />
       <quiz-step-content :content="step.content" />
       <quiz-step-navigation :navigation="step.navigation" />
@@ -12,6 +15,7 @@
   import QuizStepNavigation from '@modules/quiz/components/quiz-step-navigation';
   import QuizStepHeading from '@modules/quiz/components/quiz-step-heading';
   import QuizStepContent from '@modules/quiz/components/quiz-step-content';
+  import { STEP_CONTENT_CENTERED_TYPES } from '@modules/quiz/constants';
 
   export default {
     name: 'quiz-step',
@@ -24,6 +28,11 @@
       step: {
         type: Object,
         required: true,
+      },
+    },
+    computed: {
+      isStepContetnVerticallyCentered() {
+        return STEP_CONTENT_CENTERED_TYPES.includes(this.step.content.type);
       },
     },
   };
@@ -47,9 +56,14 @@
     }
   }
 
-  .content-wrapper {
+  .wrapper {
+    width: 100%;
     display: flex;
-    align-self: center;
+    align-items: center;
     flex-direction: column;
+  }
+
+  .justify-center {
+    justify-content: center;
   }
 </style>

@@ -7,7 +7,7 @@
           <img class="footer-hover-rotate polygon" :src="require('@images/icons/logo-inner.svg')" alt="" />
         </div>
         <div class="nav">
-          <div class="part d-md-none">
+          <div class="part d-md-flex">
             <a href="#" class="footer-link app-text app-text--sm">
               <img class="link-icon" :src="require('@images/icons/icon-education.svg')" alt="" />
               <span class="footer-link-text">Образование</span>
@@ -18,7 +18,7 @@
             <p class="app-text app-text--lg text-center">Свяжитесь с нами сейчас</p>
           </div>
 
-          <div class="part d-md-none">
+          <div class="part d-md-flex">
             <a href="#" class="footer-link app-text app-text--sm">
               <img class="link-icon" :src="require('@images/icons/icon-user.svg')" alt="" />
               <span class="footer-link-text">Войти</span>
@@ -58,6 +58,16 @@
             <img class="social-link-icon" :src="require('@images/icons/icon-chat.svg')" alt="" />
             Online-чат
           </base-button>
+        </div>
+
+        <div class="support d-md-none">
+          <a href="tel:+7 (499) 495-48-21" class="app-text app-text--lg">
+            +7 (499) 495-48-21
+          </a>
+
+          <span class="support-label app-text app-text--xs">
+            Техподдержка
+          </span>
         </div>
       </div>
     </div>
@@ -238,7 +248,7 @@
   }
 
   .social {
-    margin-top: 55px;
+    margin-top: 30px;
     margin-left: -14px;
     margin-right: -14px;
     display: flex;
@@ -297,5 +307,17 @@
         width: auto;
       }
     }
+  }
+
+  .support {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .support-label {
+    opacity: 0.5;
   }
 </style>
