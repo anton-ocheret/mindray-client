@@ -1,5 +1,6 @@
 <template>
   <div class="navigation">
+    <quiz-step-back />
     <base-button
       v-if="navigation.next"
       class="control app-text app-text--md"
@@ -23,11 +24,13 @@
 
 <script>
   import BaseButton from '@shared/components/base/button';
+  import QuizStepBack from '@modules/quiz/components/quiz-step-back';
 
   export default {
     name: 'step-navigation',
     components: {
       BaseButton,
+      QuizStepBack,
     },
     props: {
       navigation: {
