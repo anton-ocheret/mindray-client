@@ -1,6 +1,6 @@
 export default {
   navigation: {
-    first: '4',
+    first: '5',
     prev: '1',
   },
   steps: {
@@ -86,6 +86,35 @@ export default {
         type: 'single-autocomplete',
         data: {
           placeholder: 'Placeholder',
+          options: [
+            { name: 'Option 1' },
+            { name: 'Option 2' },
+            { name: 'Option 3' },
+            { name: 'Option 4' },
+            { name: 'Option 5' },
+            { name: 'Option 6' },
+            { name: 'Option 7' },
+            { name: 'Option 8' },
+            { name: 'Option 9' },
+            { name: 'Option 10' },
+            { name: 'Option 11' },
+            { name: 'Option 12' },
+          ],
+        },
+      },
+      navigation: {
+        skip: 'skip id',
+      },
+    },
+    '5': {
+      id: '5',
+      heading: {
+        text: 'Single Select Type',
+      },
+      content: {
+        type: 'single-select',
+        data: {
+          placeholder: 'Select Placeholder',
           options: [
             { name: 'Option 1' },
             { name: 'Option 2' },
