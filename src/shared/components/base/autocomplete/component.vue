@@ -1,7 +1,10 @@
 <template>
   <multiselect
-    :options="['1', '2']"
-  />
+    v-bind="$attrs"
+    v-on="$listeners"
+  >
+    <span slot="noResult">По вашему запросу нет вариантов</span>
+  </multiselect>
 </template>
 
 <script>
