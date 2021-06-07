@@ -7,7 +7,7 @@ export default {
     '3': {
       id: '3',
       heading: {
-        text: 'Single Input Question',
+        text: 'Single TextArea Question',
       },
       content: {
         type: 'single-textarea',
@@ -114,7 +114,7 @@ export default {
       content: {
         type: 'single-select',
         data: {
-          placeholder: 'Select Placeholder',
+          placeholder: 'Select Placeholder Type',
           options: [
             { name: 'Option 1' },
             { name: 'Option 2' },

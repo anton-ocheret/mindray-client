@@ -1,6 +1,6 @@
 <template>
   <base-button
-    class="quiz-step-back"
+    class="quiz-step-back d-md-flex"
     kind="link"
     size="smallest"
   >
@@ -27,6 +27,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    transform: translateX(-100%);
   }
 
   .app-text {

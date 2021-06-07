@@ -3,7 +3,6 @@
     <base-autocomplete
       :placeholder="content.placeholder"
       :options="content.options"
-      :show-labels="false"
       :multiple="false"
       class="app-text"
       v-model="value"

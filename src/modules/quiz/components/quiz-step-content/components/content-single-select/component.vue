@@ -2,6 +2,8 @@
   <div class="single-select">
     <base-select
       :options="[1, 2]"
+      v-model="value"
+      :placeholder="content.placeholder"
     />
   </div>
 </template>
@@ -14,10 +16,19 @@
     components: {
       BaseSelect,
     },
+    props: {
+      content: {
+        type: Object,
+        required: true,
+      },
+    },
+    data: () => ({
+      value: null,
+    }),
   };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .single-select {
     max-width: $field-max-width;
     width: 100%;

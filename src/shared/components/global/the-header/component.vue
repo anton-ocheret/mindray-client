@@ -77,8 +77,13 @@ export default {
   }
 
   .logo-inner {
-    width: 70%;
-    height: 70%;
+    width: 100%;
+    height: 100%;
+
+    @media (min-width: $sm) {
+      width: 70%;
+      height: 70%;
+    }
   }
 
   .link {

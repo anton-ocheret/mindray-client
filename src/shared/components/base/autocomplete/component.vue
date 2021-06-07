@@ -2,6 +2,7 @@
   <multiselect
     v-bind="$attrs"
     v-on="$listeners"
+    :show-labels="false"
   >
     <span slot="noResult">По вашему запросу нет вариантов</span>
   </multiselect>
@@ -17,10 +18,3 @@
     },
   };
 </script>
-
-<style>
-  @import './component.scss';
-  .single-autocomplete {
-    width: 100%;
-  }
-</style>
