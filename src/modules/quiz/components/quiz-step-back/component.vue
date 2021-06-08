@@ -1,6 +1,6 @@
 <template>
   <base-button
-    class="quiz-step-back d-md-flex"
+    class="quiz-step-back d-lg-flex"
     kind="link"
     size="smallest"
   >
@@ -24,10 +24,14 @@
 
 <style lang="scss" scoped>
   .quiz-step-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(-100%);
+    position: fixed;
+    top: 140px;
+    left: 35px;
+
+    @media(min-width: $xl) {
+      left: calc(50% - 990px / 2);
+      transform: translateX(-100%);
+    }
   }
 
   .app-text {

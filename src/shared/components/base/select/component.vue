@@ -22,6 +22,10 @@
     transform: translateY(-50%) rotate(-90deg);
   }
 
+  .multiselect__placeholder {
+    padding: 0;
+  }
+
   .multiselect__select {
     display: flex;
     top: 50%;

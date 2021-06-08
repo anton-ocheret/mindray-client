@@ -11,23 +11,37 @@ export default {
       },
       content: {
         type: 'multiple-fields',
-        fields: [
+        data: [
+          // {
+          //   type: 'textarea',
+          //   data: {
+          //     placeholder: 'textarea Placeholder',
+          //   },
+          // },
           {
-            field: 'textarea',
+            type: 'input',
             data: {
-              placeholder: 'textarea Placeholder',
+              placeholder: 'Name',
             },
           },
           {
-            field: 'input',
+            type: 'input',
             data: {
-              placeholder: 'input Placeholder',
+              placeholder: 'Phone',
             },
           },
           {
-            field: 'select',
+            type: 'input',
             data: {
-              placeholder: 'Placeholder',
+              placeholder: 'Email',
+            },
+          },
+          {
+            type: 'select',
+            data: {
+              placeholder: 'Select Placeholder',
+              'track-by': "name",
+              label: "name",
               options: [
                 { name: 'Option 1' },
                 { name: 'Option 2' },
@@ -44,30 +58,30 @@ export default {
               ],
             },
           },
-          {
-            field: 'autocomplete',
-            data: {
-              placeholder: 'Placeholder',
-              options: [
-                { name: 'Option 1' },
-                { name: 'Option 2' },
-                { name: 'Option 3' },
-                { name: 'Option 4' },
-                { name: 'Option 5' },
-                { name: 'Option 6' },
-                { name: 'Option 7' },
-                { name: 'Option 8' },
-                { name: 'Option 9' },
-                { name: 'Option 10' },
-                { name: 'Option 11' },
-                { name: 'Option 12' },
-              ],
-            },
-          },
+          // {
+          //   type: 'autocomplete',
+          //   data: {
+          //     placeholder: 'Placeholder',
+          //     options: [
+          //       { name: 'Option 1' },
+          //       { name: 'Option 2' },
+          //       { name: 'Option 3' },
+          //       { name: 'Option 4' },
+          //       { name: 'Option 5' },
+          //       { name: 'Option 6' },
+          //       { name: 'Option 7' },
+          //       { name: 'Option 8' },
+          //       { name: 'Option 9' },
+          //       { name: 'Option 10' },
+          //       { name: 'Option 11' },
+          //       { name: 'Option 12' },
+          //     ],
+          //   },
+          // },
         ],
       },
       navigation: {
-        skip: 'skip id',
+        next: 'skip id',
       },
     },
     '3': {
