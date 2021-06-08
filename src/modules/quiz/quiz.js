@@ -1,9 +1,75 @@
 export default {
   navigation: {
-    first: '5',
+    first: '6',
     prev: '1',
   },
   steps: {
+    '6': {
+      id: '6',
+      heading: {
+        text: 'Multiple Content',
+      },
+      content: {
+        type: 'multiple-fields',
+        fields: [
+          {
+            field: 'textarea',
+            data: {
+              placeholder: 'textarea Placeholder',
+            },
+          },
+          {
+            field: 'input',
+            data: {
+              placeholder: 'input Placeholder',
+            },
+          },
+          {
+            field: 'select',
+            data: {
+              placeholder: 'Placeholder',
+              options: [
+                { name: 'Option 1' },
+                { name: 'Option 2' },
+                { name: 'Option 3' },
+                { name: 'Option 4' },
+                { name: 'Option 5' },
+                { name: 'Option 6' },
+                { name: 'Option 7' },
+                { name: 'Option 8' },
+                { name: 'Option 9' },
+                { name: 'Option 10' },
+                { name: 'Option 11' },
+                { name: 'Option 12' },
+              ],
+            },
+          },
+          {
+            field: 'autocomplete',
+            data: {
+              placeholder: 'Placeholder',
+              options: [
+                { name: 'Option 1' },
+                { name: 'Option 2' },
+                { name: 'Option 3' },
+                { name: 'Option 4' },
+                { name: 'Option 5' },
+                { name: 'Option 6' },
+                { name: 'Option 7' },
+                { name: 'Option 8' },
+                { name: 'Option 9' },
+                { name: 'Option 10' },
+                { name: 'Option 11' },
+                { name: 'Option 12' },
+              ],
+            },
+          },
+        ],
+      },
+      navigation: {
+        skip: 'skip id',
+      },
+    },
     '3': {
       id: '3',
       heading: {
