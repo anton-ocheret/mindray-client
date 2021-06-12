@@ -1,47 +1,128 @@
 export default {
   navigation: {
     first: '6',
-    prev: '1',
+    prev: '2',
   },
-  steps: {
-    '6': {
-      id: '6',
-      heading: {
-        text: 'Multiple Content',
-      },
+  data: {
+    '1': {
+      id: '1',
       content: {
-        type: 'multiple-fields',
-        data: [
-          // {
-          //   type: 'textarea',
-          //   data: {
-          //     placeholder: 'textarea Placeholder',
-          //   },
-          // },
-          {
-            type: 'input',
-            data: {
-              placeholder: 'Name',
+        type: 'buttons-list',
+        data: {
+          heading: {
+            hint: {
+              content: {
+                type: 'text',
+                data: {
+                  text: ['Hint Text Paragraph 1', 'Hint Text Paragraph 2', 'Hint Text Paragraph 3'],
+                },
+              },
+            },
+            content: {
+              data: {
+                text: {
+                  main: 'Heading text main',
+                  sub: 'Heading text sub',
+                },
+              },
             },
           },
-          {
-            type: 'input',
-            data: {
-              placeholder: 'Phone',
+          body: {
+            content: [
+              {
+                next: 'next question id',
+                data: {
+                  content: {
+                    text: 'Отдел сервиса',
+                  },
+                  hint: {
+                    content: {
+                      type: 'text',
+                      data: {
+                        text: ['Hint', 'Hint Text', 'Hint Another Text'],
+                      },
+                    },
+                  },
+                },
+              },
+            ],
+          },
+        },
+      },
+      navigation: {
+        next: 'skip id',
+        skip: 'skip id',
+      },
+    },
+    '2': {
+      id: '2',
+      content: {
+        type: 'single-input',
+        data: {
+          heading: {
+            content: {
+              data: {
+                text: {
+                  main: 'Heading text main single input',
+                },
+              },
             },
           },
-          {
-            type: 'input',
-            data: {
-              placeholder: 'Email',
+          body: {
+            content: {
+              placeholder: 'Single input placeholder',
             },
           },
-          {
-            type: 'select',
-            data: {
-              placeholder: 'Select Placeholder',
-              'track-by': "name",
-              label: "name",
+        },
+      },
+      navigation: {
+        next: 'skip id',
+        skip: 'skip id',
+      },
+    },
+    '3': {
+      id: '3',
+      content: {
+        type: 'single-textarea',
+        data: {
+          heading: {
+            content: {
+              data: {
+                text: {
+                  main: 'Heading text main single textarea',
+                },
+              },
+            },
+          },
+          body: {
+            content: {
+              placeholder: 'Single input placeholder',
+            },
+          },
+        },
+      },
+      navigation: {
+        next: 'skip id',
+        skip: 'skip id',
+      },
+    },
+    '4': {
+      id: '4',
+      content: {
+        type: 'single-select',
+        data: {
+          heading: {
+            content: {
+              data: {
+                text: {
+                  main: 'Heading text main single select',
+                },
+              },
+            },
+          },
+          body: {
+            content: {
+              placeholder: 'Single select placeholder',
               options: [
                 { name: 'Option 1' },
                 { name: 'Option 2' },
@@ -58,160 +139,108 @@ export default {
               ],
             },
           },
-          // {
-          //   type: 'autocomplete',
-          //   data: {
-          //     placeholder: 'Placeholder',
-          //     options: [
-          //       { name: 'Option 1' },
-          //       { name: 'Option 2' },
-          //       { name: 'Option 3' },
-          //       { name: 'Option 4' },
-          //       { name: 'Option 5' },
-          //       { name: 'Option 6' },
-          //       { name: 'Option 7' },
-          //       { name: 'Option 8' },
-          //       { name: 'Option 9' },
-          //       { name: 'Option 10' },
-          //       { name: 'Option 11' },
-          //       { name: 'Option 12' },
-          //     ],
-          //   },
-          // },
-        ],
+        },
       },
       navigation: {
         next: 'skip id',
-      },
-    },
-    '3': {
-      id: '3',
-      heading: {
-        text: 'Single TextArea Question',
-      },
-      content: {
-        type: 'single-textarea',
-        data: {
-          placeholder: 'Placeholder',
-        },
-      },
-      navigation: {
-        skip: 'skip id',
-      },
-    },
-    '1,': {
-      id: '1',
-      heading: {
-        text: 'Пожалуйста, напишите свой вопрос и специалист свяжется с Вами в ближайшее время',
-        hint: {
-          type: 'text' || 'modal',
-          content: {
-            image: 'url',
-            paragraphs: ['Text', 'Some Another Text'],
-          },
-        },
-      },
-      content: {
-        type: 'buttons',
-        data: {
-          '1': {
-            id: '1',
-            next: 'next question id',
-            content: {
-              text: 'Отдел сервиса',
-              hint: {
-                type: 'text' || 'modal',
-                content: {
-                  image: 'url',
-                  paragraphs: ['Text', 'Some Another Text'],
-                },
-              },
-            },
-          },
-          '2': {
-            id: '2',
-            next: 'next question id',
-            content: {
-              text: 'Отдел продаж',
-            },
-          },
-        },
-      },
-      navigation: {
-        next: 'next id',
-        skip: 'skip id',
-      },
-    },
-    '2': {
-      id: 2,
-      heading: {
-        text: 'Single Input Question',
-      },
-      content: {
-        type: 'single-input',
-        data: {
-          placeholder: 'Placeholder onput',
-        },
-      },
-      navigation: {
-        skip: 'skip id',
-      },
-    },
-    '4': {
-      id: '4',
-      heading: {
-        text: 'Single Autocomplete Question',
-      },
-      content: {
-        type: 'single-autocomplete',
-        data: {
-          placeholder: 'Placeholder',
-          options: [
-            { name: 'Option 1' },
-            { name: 'Option 2' },
-            { name: 'Option 3' },
-            { name: 'Option 4' },
-            { name: 'Option 5' },
-            { name: 'Option 6' },
-            { name: 'Option 7' },
-            { name: 'Option 8' },
-            { name: 'Option 9' },
-            { name: 'Option 10' },
-            { name: 'Option 11' },
-            { name: 'Option 12' },
-          ],
-        },
-      },
-      navigation: {
         skip: 'skip id',
       },
     },
     '5': {
       id: '5',
-      heading: {
-        text: 'Single Select Type',
-      },
       content: {
-        type: 'single-select',
+        type: 'single-autocomplete',
         data: {
-          placeholder: 'Select Placeholder Type',
-          options: [
-            { name: 'Option 1' },
-            { name: 'Option 2' },
-            { name: 'Option 3' },
-            { name: 'Option 4' },
-            { name: 'Option 5' },
-            { name: 'Option 6' },
-            { name: 'Option 7' },
-            { name: 'Option 8' },
-            { name: 'Option 9' },
-            { name: 'Option 10' },
-            { name: 'Option 11' },
-            { name: 'Option 12' },
-          ],
+          heading: {
+            content: {
+              data: {
+                text: {
+                  main: 'Heading text main single autocomplete',
+                },
+              },
+            },
+          },
+          body: {
+            content: {
+              placeholder: 'Single autocomplete placeholder',
+              options: [
+                { name: 'Option 1' },
+                { name: 'Option 2' },
+                { name: 'Option 3' },
+                { name: 'Option 4' },
+                { name: 'Option 5' },
+                { name: 'Option 6' },
+                { name: 'Option 7' },
+                { name: 'Option 8' },
+                { name: 'Option 9' },
+                { name: 'Option 10' },
+                { name: 'Option 11' },
+                { name: 'Option 12' },
+              ],
+            },
+          },
         },
       },
       navigation: {
+        next: 'skip id',
+        skip: 'skip id',
+      },
+    },
+    '6': {
+      id: '6',
+      content: {
+        type: 'multiple-fields',
+        data: {
+          heading: {
+            content: {
+              data: {
+                text: {
+                  main: 'Heading text main multiple fields',
+                },
+              },
+            },
+          },
+          body: {
+            content: [
+              {
+                type: 'select',
+                data: {
+                  placeholder: 'Select placeholder',
+                  label: 'name',
+                  options: [
+                    { name: 'Option 1' },
+                    { name: 'Option 2' },
+                    { name: 'Option 3' },
+                    { name: 'Option 4' },
+                    { name: 'Option 5' },
+                    { name: 'Option 6' },
+                    { name: 'Option 7' },
+                    { name: 'Option 8' },
+                    { name: 'Option 9' },
+                    { name: 'Option 10' },
+                    { name: 'Option 11' },
+                    { name: 'Option 12' },
+                  ],
+                },
+              },
+              {
+                type: 'textarea',
+                data: {
+                  placeholder: 'Textarea placeholder',
+                },
+              },
+              {
+                type: 'input',
+                data: {
+                  placeholder: 'Input placeholder',
+                },
+              },
+            ],
+          },
+        },
+      },
+      navigation: {
+        next: 'skip id',
         skip: 'skip id',
       },
     },

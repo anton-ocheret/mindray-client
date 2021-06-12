@@ -53,14 +53,14 @@ fieldset[disabled] .multiselect {
   font-size: 14px;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  padding-left: 10px !important;
+  padding-left: 10px;
 }
 
 @media(min-width: 992px) {
   .multiselect__input,
   .multiselect__single {
     font-size: 18px;
-    padding-left: 20px !important;
+    padding-left: 20px;
   }
 }
 
@@ -112,7 +112,7 @@ fieldset[disabled] .multiselect {
   border: none;
   border-radius: 5px;
   background: #fff;
-  padding: 0 0 0 5px;
+  // padding: 0 0 0 5px;
   width: 100%;
   transition: border .1s ease;
   box-sizing: border-box;
@@ -166,6 +166,11 @@ fieldset[disabled] .multiselect {
   background-repeat: no-repeat;
   background-position: 15px 50%;
   background-size: 15px;
+  transition: box-shadow .17s ease-in-out;
+}
+
+.multiselect--active .multiselect__tags {
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, .25);
 }
 
 .multiselect__tags:before {
@@ -298,10 +303,6 @@ fieldset[disabled] .multiselect {
     padding-left: 20px;
   }
 }
-
-// .multiselect--active .multiselect__placeholder {
-//   display: none
-// }
 
 .multiselect__content-wrapper {
   position: absolute;
@@ -500,5 +501,17 @@ fieldset[disabled] .multiselect {
 
   to {
       transform: rotate(2turn)
+  }
+}
+
+.single-autocomplete .multiselect__input
+.single-autocomplete .multiselect__single {
+  padding-left: 10px;
+}
+
+@media(min-width: 992px) {
+  .single-autocomplete .multiselect__input,
+  .single-autocomplete .multiselect__single {
+    padding-left: 20px;
   }
 }

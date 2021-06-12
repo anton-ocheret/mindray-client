@@ -2,34 +2,31 @@
   <div class="buttons-content">
     <base-button
       class="button app-text app-text--lg"
-      v-for="button in Object.values(content)"
-      :key="button.id"
+      v-for="(button, index) in content"
+      :key="index"
     >
-      {{ button.content.text }}
-      <template v-if="button.content.hint">
-        <quiz-step-hint
-          class="hint"
-          position="relative"
-          :hint="button.content.hint"
-        />
-      </template>
+      {{ button.data.content.text }}
+      <buttons-list-hint
+        v-if="button.data.hint"
+        :content="button.data.hint.content"
+      />
     </base-button>
   </div>
 </template>
 
 <script>
   import BaseButton from '@shared/components/base/button';
-  const QuizStepHint = () => import(/* webpackChunkName: 'quiz-step-heading-hint' */ '@modules/quiz/components/quiz-step-hint');
+  import ButtonsListHint from '@modules/quiz/components/quiz-step-content/components/content-buttons-list/components/buttons-list-hint';
 
   export default {
-    name: 'content-buttons',
+    name: 'content-buttons-list',
     components: {
-      QuizStepHint,
       BaseButton,
+      ButtonsListHint,
     },
     props: {
       content: {
-        type: Object,
+        type: Array,
         required: true,
       },
     },

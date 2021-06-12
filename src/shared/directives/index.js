@@ -1,9 +1,9 @@
 import moveWithCursor from './move-with-cursor';
+import positionInText from './position-in-text';
 import hoverRotate from './hover-rotate';
-import hint from './hint';
 
 export {
   moveWithCursor,
+  positionInText,
   hoverRotate,
-  hint,
 };

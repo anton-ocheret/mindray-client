@@ -1,9 +1,11 @@
 <template>
   <div class="single-select">
     <base-select
-      :options="[1, 2]"
+      :options="content.options"
       v-model="value"
       :placeholder="content.placeholder"
+      track-by="name"
+      label="name"
     />
   </div>
 </template>
@@ -34,5 +36,9 @@
     width: 100%;
     margin-top: 20px;
     margin-bottom: 10px;
+
+    .multiselect__single {
+      padding-left: 0;
+    }
   }
 </style>

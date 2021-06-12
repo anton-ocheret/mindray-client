@@ -1,7 +1,7 @@
 <template>
   <component
-    :is="`content-${content.type}`"
-    :content="content.data"
+    :is="`content-${type}`"
+    :content="data.content"
   />
 </template>
 
@@ -11,7 +11,7 @@
   const ContentSingleTextarea = () => import(/* webpackChunkName: 'step-content-single-textarea' */ '@modules/quiz/components/quiz-step-content/components/content-single-textarea');
   const ContentSingleSelect = () => import(/* webpackChunkName: 'step-content-single-select' */ '@modules/quiz/components/quiz-step-content/components/content-single-select');
   const ContentSingleInput = () => import(/* webpackChunkName: 'step-content-single-input' */ '@modules/quiz/components/quiz-step-content/components/content-single-input');
-  const ContentButtons = () => import(/* webpackChunkName: 'step-content-buttons' */ '@modules/quiz/components/quiz-step-content/components/content-buttons');
+  const ContentButtonsList = () => import(/* webpackChunkName: 'step-content-buttons-list' */ '@modules/quiz/components/quiz-step-content/components/content-buttons-list');
 
   export default {
     name: 'quiz-step-content',
@@ -21,10 +21,14 @@
       ContentSingleTextarea,
       ContentSingleSelect,
       ContentSingleInput,
-      ContentButtons,
+      ContentButtonsList,
     },
     props: {
-      content: {
+      type: {
+        type: String,
+        required: true,
+      },
+      data: {
         type: Object,
         required: true,
       },

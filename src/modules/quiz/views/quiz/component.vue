@@ -1,6 +1,6 @@
 <template>
   <div class="quiz">
-    <quiz-step :step="quiz.steps[quiz.navigation.first]" />
+    <quiz-step :step="quiz.data[quiz.navigation.first]" />
   </div>
 </template>
 

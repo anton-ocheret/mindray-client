@@ -1,13 +1,14 @@
 <template>
-  <div class="content-text">
+  <div class="hint-content-text">
     <img
+      v-if="toggleHandler"
       class="close"
       :src="require('@images/icons/icon-close.svg')" alt=""
-      @click="$emit('hint-content:close')"
+      @click="toggleHandler"
     />
     <p
       class="app-text app-text--xs"
-      v-for="(paragraph, index) in content.paragraphs"
+      v-for="(paragraph, index) in content.text"
       :key="index"
     >
       {{ paragraph }}
@@ -23,22 +24,27 @@ export default {
       type: Object,
       required: true,
     },
+    toggleHandler: {
+      type: Function,
+      default: null,
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-  .content-text {
+  .hint-content-text {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.07);
     border-radius: 10px;
-    position: absolute;
     background-color: $white;
-    top: 0;
-    left: 0;
-    transform: translate(calc(-100% - 10px), -5px);
-    padding: 18px 38px 18px 18px;
     text-align: left;
-    min-width: 350px;
+    padding: 12px 40px 12px 12px;
+    min-width: 200px;
+
+    @media(min-width: $sm) {
+      padding: 18px 38px 18px 18px;
+      min-width: 350px;
+    }
   }
 
   .close {

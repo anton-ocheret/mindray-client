@@ -4,8 +4,14 @@
       class="wrapper"
       :class="{ 'justify-center': isStepContetnVerticallyCentered }"
     >
-      <quiz-step-heading :heading="step.heading" />
-      <quiz-step-content :content="step.content" />
+      <quiz-step-heading
+        :hint="step.content.data.heading.hint"
+        :content="step.content.data.heading.content"
+      />
+      <quiz-step-content
+        :type="step.content.type"
+        :data="step.content.data.body"
+      />
       <quiz-step-navigation :navigation="step.navigation" />
     </div>
   </div>

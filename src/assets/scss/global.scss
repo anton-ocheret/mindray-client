@@ -19,6 +19,7 @@ body {
 }
 
 h1 {
+  font-weight: $font-weight-normal;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -72,6 +73,26 @@ button {
   }
 }
 
+.app-heading-text--lg {
+  font-size: $heading-font-size-xs;
+  font-weight: $font-weight-normal;
+  line-height: 1.2;
+
+  @media(min-width: $md) {
+    font-size: $heading-font-size-lg;
+  }
+}
+
+.app-sub-heading-text--lg {
+  font-size: $sub-heading-font-size-xs;
+  font-weight: $font-weight-normal;
+  line-height: 1.2;
+
+  @media(min-width: $md) {
+    font-size: $sub-heading-font-size-lg;
+  }
+}
+
 .text-center {
   text-align: center;
 }
@@ -87,16 +108,6 @@ button {
 }
 :-moz-placeholder {
   color: rgba($black, .4);
-}
-
-.app-heading--lg {
-  font-size: $heading-font-size-xs;
-  font-weight: $font-weight-normal;
-  line-height: 1.2;
-
-  @media(min-width: $md) {
-    font-size: $heading-font-size-lg;
-  }
 }
 
 .d-sm-block {

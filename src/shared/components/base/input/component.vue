@@ -30,6 +30,7 @@
     box-shadow: 0px 5px 10px 0px rgba($black, .12);
     border-radius: 10px;
     padding: 14px 20px;
+    transition: box-shadow .17s ease-in-out;
 
     @media(min-width: $md) {
       padding: 22px 40px;
@@ -37,6 +38,7 @@
 
     &:focus {
       outline: none;
+      box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, .25);
     }
   }
 </style>

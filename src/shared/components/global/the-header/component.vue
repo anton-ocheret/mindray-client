@@ -1,9 +1,9 @@
 <template>
   <header class="app-header">
-    <router-link v-hover-rotate to="/" class="logo">
-      <img :src="require('@images/icons/logo-outer.svg')" alt="" />
+    <div class="logo">
+      <img class="logo-outer" :src="require('@images/icons/logo-outer.svg')" />
       <img class="hover-rotate logo-inner" :src="require('@images/icons/logo-inner.svg')" alt="" />
-    </router-link>
+    </div>
 
     <div class="app-header__center d-md-flex">
       <span class="app-text app-text--xs">
@@ -57,32 +57,31 @@ export default {
     }
   }
 
+  .logo-outer {
+    width: 100%;
+    height: 100%;
+  }
+
+  .logo-inner {
+    width: 70%;
+    height: 70%;
+  }
+
   .logo {
     width: 40px;
     height: 40px;
     position: relative;
+
+    @media(min-width: $md) {
+      width: 60px;
+      height: 60px;
+    }
 
     img {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-    }
-
-    @media(min-width: $sm) {
-      width: 60px;
-      height: 60px;
-      position: relative;
-    }
-  }
-
-  .logo-inner {
-    width: 100%;
-    height: 100%;
-
-    @media (min-width: $sm) {
-      width: 70%;
-      height: 70%;
     }
   }
 
