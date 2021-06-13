@@ -1,6 +1,6 @@
 import { gsap } from 'gsap/all';
 
-export default {
+const hoverRotate = {
   bind(el, { value = { cls: 'hover-rotate', rotation: '+=30' } }) {
     const tl = gsap.timeline();
     el.__mouseHoverHandler__ = () => {
@@ -18,3 +18,5 @@ export default {
     el.removeEventListener('mouseleave', el.__mouseHoverHandler__);
   },
 };
+
+export default hoverRotate;

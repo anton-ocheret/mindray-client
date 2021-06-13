@@ -56,7 +56,9 @@
     height: 14px;
     position: absolute;
     top: 0;
+    opacity: 0;
     transform: translate(0, -50%);
+    transition: opacity .17s ease-in-out;
     
     @media(min-width: $md) {
       width: auto;

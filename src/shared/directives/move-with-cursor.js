@@ -1,6 +1,6 @@
 import { gsap } from 'gsap/all';
 
-export default {
+const moveWithCursor = {
   bind(el) {
     el.style.position = 'fixed';
     el.style.zIndex = 1;
@@ -34,3 +34,5 @@ export default {
     document.body.removeEventListener('mousemove', el.__mouseMoveHandler__);
   },
 };
+
+export default moveWithCursor;

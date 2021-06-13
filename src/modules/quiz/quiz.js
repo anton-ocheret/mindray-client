@@ -10,14 +10,6 @@ export default {
         type: 'buttons-list',
         data: {
           heading: {
-            hint: {
-              content: {
-                type: 'text',
-                data: {
-                  text: ['Hint Text Paragraph 1', 'Hint Text Paragraph 2', 'Hint Text Paragraph 3'],
-                },
-              },
-            },
             content: {
               data: {
                 text: {
@@ -26,14 +18,44 @@ export default {
                 },
               },
             },
+            hint: {
+              content: {
+                type: 'text',
+                data: {
+                  text: ['Hint Text Paragraph 1', 'Hint Text Paragraph 2', 'Hint Text Paragraph 3'],
+                },
+              },
+            },
           },
           body: {
             content: [
               {
-                next: 'next question id',
+                navigation: {
+                  next: '2',
+                },
                 data: {
                   content: {
                     text: 'Отдел сервиса',
+                  },
+                },
+              },
+              {
+                navigation: {
+                  next: '3',
+                },
+                data: {
+                  content: {
+                    text: 'Монитор-дифибриллятор Mindray BeneHeart D3',
+                  },
+                },
+              },
+              {
+                navigation: {
+                  next: '4',
+                },
+                data: {
+                  content: {
+                    text: 'Не важно',
                   },
                   hint: {
                     content: {

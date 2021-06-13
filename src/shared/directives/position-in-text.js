@@ -10,7 +10,7 @@ const getTopRightElementPosition = (elems) => {
 const removeEmptyElements = (array) => array.filter(Boolean);
 const createTemplate = (wordsArray) => wordsArray.map((word) => `<span>${word}</span> `).join('');
 
-export default {
+const positionInText = {
   inserted(el, bindings) {
     const { elementClass } = bindings.value;
     const relativeElement = document.querySelector(elementClass);
@@ -24,7 +24,8 @@ export default {
       const { offsetWidth, offsetLeft } = topRightElement;
       const left = offsetLeft + offsetWidth;
       if (el && left) {
-        el.style.left = `${left}px`;        
+        el.style.left = `${left}px`;
+        el.style.opacity = 1;
       }
     };
 
@@ -37,3 +38,5 @@ export default {
     window.removeEventListener('resize', el.__debouncedUpdatePositionValue__);
   },
 };
+
+export default positionInText;

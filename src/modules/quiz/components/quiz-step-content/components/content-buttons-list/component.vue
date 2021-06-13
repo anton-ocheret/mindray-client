@@ -4,6 +4,7 @@
       class="button app-text app-text--lg"
       v-for="(button, index) in content"
       :key="index"
+      @click="$root.$emit('quiz:update-step', button.navigation.next)"
     >
       {{ button.data.content.text }}
       <buttons-list-hint

@@ -1,5 +1,5 @@
 <template>
-  <div class="hint">
+  <div class="hint" @[toggleEvent].stop>
     <slot name="activator" :toggle="toggle">
       <img
         alt=""

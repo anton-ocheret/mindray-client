@@ -42,6 +42,12 @@
         this.updateCurrentStep(stepId);
       },
     },
+    mounted() {
+      this.$root.$on('quiz:update-step', this.updateStep);
+    },
+    beforeDestroy() {
+      this.$root.$off('quiz:update-step', this.updateStep);
+    },
   };
 </script>
 
