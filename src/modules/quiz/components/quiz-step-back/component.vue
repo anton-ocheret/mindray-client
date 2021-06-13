@@ -3,6 +3,7 @@
     class="quiz-step-back d-lg-flex"
     kind="link"
     size="smallest"
+    @click="stepBackHandler"
   >
     <img :src="require('@images/icons/icon-back.svg')" class="icon" alt="" />
     <span class="app-text app-text--sm">
@@ -16,6 +17,12 @@
 
   export default {
     name: 'quiz-step-back',
+    props: {
+      stepBackHandler: {
+        type: Function,
+        required: true,
+      },
+    },
     components: {
       BaseButton,
     },

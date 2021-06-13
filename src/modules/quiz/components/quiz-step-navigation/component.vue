@@ -1,11 +1,15 @@
 <template>
   <div class="navigation">
-    <quiz-step-back />
+    <quiz-step-back
+      v-if="previousStepId"
+      :step-back-handler="() => updateStep(previousStepId, false)"
+    />
     <base-button
       v-if="navigation.next"
       class="control app-text app-text--md"
       kind="bordered"
       size="small"
+      @click="() => updateStep(navigation.next)"
     >
       Далее
     </base-button>
@@ -15,6 +19,7 @@
       class="control app-text app-text--md"
       kind="link"
       size="smallest"
+      @click="() => updateStep(navigation.skip)"
     >
       <span>Пропустить</span>
       <img class="icon-skip" src="@images/icons/icon-arrow-small.svg" alt="" />
@@ -33,8 +38,16 @@
       QuizStepBack,
     },
     props: {
+      previousStepId: {
+        type: String,
+        default: null,
+      },
       navigation: {
         type: Object,
+        required: true,
+      },
+      updateStep: {
+        type: Function,
         required: true,
       },
     },

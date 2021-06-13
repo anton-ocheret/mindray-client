@@ -5,14 +5,18 @@
       :class="{ 'justify-center': isStepContetnVerticallyCentered }"
     >
       <quiz-step-heading
-        :hint="step.content.data.heading.hint"
-        :content="step.content.data.heading.content"
+        :hint="currentStep.content.data.heading.hint"
+        :content="currentStep.content.data.heading.content"
       />
       <quiz-step-content
-        :type="step.content.type"
-        :data="step.content.data.body"
+        :type="currentStep.content.type"
+        :data="currentStep.content.data.body"
       />
-      <quiz-step-navigation :navigation="step.navigation" />
+      <quiz-step-navigation
+        :previous-step-id="previousStepId"
+        :navigation="currentStep.navigation"
+        :update-step="updateStep"
+      />
     </div>
   </div>
 </template>
@@ -31,14 +35,22 @@
       QuizStepContent,
     },
     props: {
-      step: {
+      currentStep: {
         type: Object,
         required: true,
+      },
+      updateStep: {
+        type: Function,
+        required: true,
+      },
+      previousStepId: {
+        type: String,
+        default: null,
       },
     },
     computed: {
       isStepContetnVerticallyCentered() {
-        return STEP_CONTENT_CENTERED_TYPES.includes(this.step.content.type);
+        return STEP_CONTENT_CENTERED_TYPES.includes(this.currentStep.content.type);
       },
     },
   };

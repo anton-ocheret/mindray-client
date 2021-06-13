@@ -1,7 +1,7 @@
 export default {
   navigation: {
-    first: '6',
-    prev: '2',
+    current: '1',
+    history: ['1'],
   },
   data: {
     '1': {
@@ -21,7 +21,7 @@ export default {
             content: {
               data: {
                 text: {
-                  main: 'Heading text main',
+                  main: 'Heading text main buttons list',
                   sub: 'Heading text sub',
                 },
               },
@@ -50,8 +50,8 @@ export default {
         },
       },
       navigation: {
-        next: 'skip id',
-        skip: 'skip id',
+        next: '2',
+        skip: '3',
       },
     },
     '2': {
@@ -76,8 +76,8 @@ export default {
         },
       },
       navigation: {
-        next: 'skip id',
-        skip: 'skip id',
+        next: '3',
+        skip: '4',
       },
     },
     '3': {
@@ -102,8 +102,8 @@ export default {
         },
       },
       navigation: {
-        next: 'skip id',
-        skip: 'skip id',
+        next: '4',
+        skip: '5',
       },
     },
     '4': {
@@ -142,8 +142,8 @@ export default {
         },
       },
       navigation: {
-        next: 'skip id',
-        skip: 'skip id',
+        next: '5',
+        skip: '6',
       },
     },
     '5': {
@@ -182,8 +182,8 @@ export default {
         },
       },
       navigation: {
-        next: 'skip id',
-        skip: 'skip id',
+        next: '6',
+        skip: '1',
       },
     },
     '6': {
@@ -240,8 +240,8 @@ export default {
         },
       },
       navigation: {
-        next: 'skip id',
-        skip: 'skip id',
+        next: '1',
+        skip: '2',
       },
     },
   },
