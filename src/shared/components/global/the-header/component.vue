@@ -1,16 +1,16 @@
 <template>
   <header class="app-header">
-    <router-link v-hover-rotate to="/" class="logo">
-      <img :src="require('@images/icons/logo-outer.svg')" alt="" />
+    <div class="logo">
+      <img class="logo-outer" :src="require('@images/icons/logo-outer.svg')" />
       <img class="hover-rotate logo-inner" :src="require('@images/icons/logo-inner.svg')" alt="" />
-    </router-link>
+    </div>
 
-    <div class="app-header__center">
+    <div class="app-header__center d-md-flex">
       <span class="app-text app-text--xs">
         Техподдержка
       </span>
 
-      <a href="tel:+7 (499) 495-48-21" class="app-text app-text--lg">
+      <a href="tel:+7 (499) 495-48-21" class="app-text app-text--lg link">
         +7 (499) 495-48-21
       </a>
     </div>
@@ -27,7 +27,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .app-header {
     position: fixed;
     width: 100%;
@@ -36,11 +36,11 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 30px;
-    z-index: 1;
+    padding: 25px $padding-mobile-x;
+    z-index: 3;
 
     @media(min-width: $sm) {
-      padding: 30px 35px;
+      padding: 30px $padding-desktop-x;
     }
   }
 
@@ -57,10 +57,25 @@ export default {
     }
   }
 
+  .logo-outer {
+    width: 100%;
+    height: 100%;
+  }
+
+  .logo-inner {
+    width: 70%;
+    height: 70%;
+  }
+
   .logo {
     width: 40px;
     height: 40px;
     position: relative;
+
+    @media(min-width: $md) {
+      width: 60px;
+      height: 60px;
+    }
 
     img {
       position: absolute;
@@ -68,16 +83,24 @@ export default {
       top: 50%;
       transform: translate(-50%, -50%);
     }
-
-    @media(min-width: $sm) {
-      width: 60px;
-      height: 60px;
-      position: relative;
-    }
   }
 
-  .logo-inner {
-    width: 70%;
-    height: 70%;
+  .link {
+    position: relative;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      height: 1px;
+      width: 0;
+      background-color: currentColor;
+      transition: width .25s ease-in-out;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
   }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div class="layout-default">
+    <the-background />
     <the-header />
     <main class="main">
       <slot></slot>
@@ -9,12 +10,14 @@
 </template>
 
 <script>
+  import TheBackground from '@shared/components/global/the-background';
   import TheHeader from '@shared/components/global/the-header';
   import TheFooter from '@shared/components/global/the-footer';
 
   export default {
     name: 'layout-default',
     components: {
+      TheBackground,
       TheHeader,
       TheFooter,
     },

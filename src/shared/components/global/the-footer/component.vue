@@ -7,10 +7,10 @@
           <img class="footer-hover-rotate polygon" :src="require('@images/icons/logo-inner.svg')" alt="" />
         </div>
         <div class="nav">
-          <div class="part d-md-none">
-            <a href="#" class="link footer-link app-text app-text--sm">
+          <div class="part d-md-flex">
+            <a href="#" class="footer-link app-text app-text--sm">
               <img class="link-icon" :src="require('@images/icons/icon-education.svg')" alt="" />
-              Образование
+              <span class="footer-link-text">Образование</span>
             </a>
           </div>
           
@@ -18,15 +18,56 @@
             <p class="app-text app-text--lg text-center">Свяжитесь с нами сейчас</p>
           </div>
 
-          <div class="part d-md-none">
-            <a href="#" class="link footer-link app-text app-text--sm">
+          <div class="part d-md-flex">
+            <a href="#" class="footer-link app-text app-text--sm">
               <img class="link-icon" :src="require('@images/icons/icon-user.svg')" alt="" />
-              Войти
+              <span class="footer-link-text">Войти</span>
             </a>
           </div>
         </div>
         <div class="social">
-          Кнопки
+          <base-button
+            class="social-link app-text"
+            kind="inverse"
+            size="small"
+          >
+            <img class="social-link-icon" :src="require('@images/icons/icon-whatsapp.svg')" alt="" />
+            <span>WhatsApp</span>
+          </base-button>
+          <base-button
+            class="social-link"
+            kind="inverse"
+            size="small"
+          >
+            <img class="social-link-icon" :src="require('@images/icons/icon-telegram.svg')" alt="" />
+            Telegram
+          </base-button>
+          <base-button
+            class="social-link"
+            kind="inverse"
+            size="small"
+          >
+            <img class="social-link-icon" :src="require('@images/icons/icon-viber.svg')" alt="" />
+            Viber
+          </base-button>
+          <base-button
+            class="social-link"
+            kind="inverse"
+            size="small"
+          >
+            <img class="social-link-icon" :src="require('@images/icons/icon-chat.svg')" alt="" />
+            Online-чат
+          </base-button>
+        </div>
+
+        <div class="support d-md-none">
+          <a href="tel:+7 (499) 495-48-21" class="app-text app-text--lg">
+            +7 (499) 495-48-21
+          </a>
+
+          <span class="support-label app-text app-text--xs">
+            Техподдержка
+          </span>
         </div>
       </div>
     </div>
@@ -34,11 +75,15 @@
 </template>
 
 <script>
+  import BaseButton from '@shared/components/base/button';
   import toggle from '@shared/components/global/the-footer/directives';
   import { hoverRotate } from '@shared/directives';
 
   export default {
     name: 'the-footer',
+    components: {
+      BaseButton,
+    },
     directives: {
       toggle,
       hoverRotate,
@@ -48,13 +93,15 @@
 
 <style lang="scss">
   html.footer-opened {
-    .app-footer .content {
-      transform: translateZ(0) !important; 
-    }
-
-    .app-footer .background {
-      opacity: .7;
-      pointer-events: auto;
+    .app-footer {
+      .content {
+        transform: translateZ(0) !important; 
+      }
+      
+      .background {
+        opacity: .7;
+        pointer-events: auto;
+      }
     }
   }
 </style>
@@ -84,6 +131,31 @@
     opacity: 0;
     transition: opacity .6s cubic-bezier(.35, .755, .42, .95);
     cursor: pointer;
+  }
+
+  .footer-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .footer-link-text:after {
+      content: '';
+      position: absolute;
+      bottom: 1px;
+      left: 0;
+      height: 1px;
+      width: 0;
+      background-color: currentColor;
+      transition: width .25s ease-in-out;
+    }
+
+    &:hover .footer-link-text:after {
+      width: 100%;
+    }
+  }
+
+  .footer-link-text {
+    position: relative;
   }
 
   .content {
@@ -127,11 +199,11 @@
   }
 
   .content-inner {
-    padding: 0 35px 40px;
+    padding: 0 $padding-mobile-x 25px;
     background-color: $white;
 
     @media(min-width: $md) {
-      padding: 0 30px 25px;
+      padding: 0 $padding-desktop-x 40px;
     }
   }
 
@@ -177,10 +249,31 @@
 
   .social {
     margin-top: 30px;
+    margin-left: -14px;
+    margin-right: -14px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
     @media(min-width: $md) {
-      margin-top: 80px;
+      margin-top: 70px;
+      margin-left: auto;
+      margin-right: auto;
     }
+  }
+
+  .social-link {
+    margin: 7px;
+    width: calc(50% - 14px);
+
+    @media(min-width: $sm) {
+      width: auto;
+      margin: 10px;
+    }
+  }
+
+  .social-link-icon {
+    margin-right: 10px;
   }
 
   .logo {
@@ -193,6 +286,13 @@
     top: 16px;
     left: 50%;
     transform: translateX(-50%);
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
 
     @media(min-width: $md) {
       width: 60px;
@@ -207,5 +307,17 @@
         width: auto;
       }
     }
+  }
+
+  .support {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .support-label {
+    opacity: 0.5;
   }
 </style>

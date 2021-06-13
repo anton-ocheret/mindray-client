@@ -1,15 +1,53 @@
 <template>
   <div class="quiz">
-    <img v-move-with-cursor :src="require('@images/icons/blob-cursor.svg')" alt="" />
+    <quiz-step
+      :key="currentStep.id"
+      :current-step="currentStep"
+      :update-step="updateStep"
+      :previous-step-id="previousStepId"
+    />
   </div>
 </template>
 
 <script>
-  import { moveWithCursor } from '@shared/directives';
-
+  import { quiz } from '@modules/quiz';
+  import QuizStep from '@modules/quiz/components/quiz-step';
+  
   export default {
     name: 'Quiz',
-    directives: { moveWithCursor },
+    components: { QuizStep },
+    data: () => ({
+      quiz,
+    }),
+    computed: {
+      currentStep() {
+        return this.quiz.data[quiz.navigation.current];
+      },
+      previousStepId() {
+        const activeStepIndex = this.quiz.navigation.history.lastIndexOf(this.quiz.navigation.current);
+        return this.quiz.navigation.history[activeStepIndex - 1];
+      },
+    },
+    methods: {
+      getUpdateHistoryMethodName: (ahead) => ahead ? 'push' : 'pop',
+      updateHistory(id, method) {
+        this.quiz.navigation.history[method](id);
+      },
+      updateCurrentStep(stepId) {
+        this.quiz.navigation.current = stepId;
+      },
+      updateStep(stepId, ahead = true) {
+        const method = this.getUpdateHistoryMethodName(ahead);
+        this.updateHistory(stepId, method);
+        this.updateCurrentStep(stepId);
+      },
+    },
+    mounted() {
+      this.$root.$on('quiz:update-step', this.updateStep);
+    },
+    beforeDestroy() {
+      this.$root.$off('quiz:update-step', this.updateStep);
+    },
   };
 </script>
 
@@ -18,9 +56,11 @@
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    background-image: url('../../../../../src/assets/images/icons/blobs.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    align-items: center;
+    padding: 130px $padding-mobile-x;
+
+    @media(min-width: $sm) {
+      padding: 140px $padding-desktop-x;
+    }
   }
 </style>
