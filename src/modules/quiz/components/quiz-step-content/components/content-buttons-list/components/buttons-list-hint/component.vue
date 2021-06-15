@@ -43,6 +43,7 @@
 
 <style lang="scss" scoped>
   .buttons-list-hint {
+    position: relative;
     width: 14px;
     height: 14px;
     

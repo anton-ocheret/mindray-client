@@ -28,46 +28,37 @@ export default {
             },
           },
           body: {
-            content: [
-              {
-                navigation: {
-                  next: '2',
-                },
-                data: {
-                  content: {
-                    text: 'Отдел сервиса',
+            content: {
+              buttons: [
+                {
+                  navigation: {
+                    next: '4',
                   },
-                },
-              },
-              {
-                navigation: {
-                  next: '3',
-                },
-                data: {
-                  content: {
-                    text: 'Монитор-дифибриллятор Mindray BeneHeart D3',
-                  },
-                },
-              },
-              {
-                navigation: {
-                  next: '4',
-                },
-                data: {
-                  content: {
-                    text: 'Не важно',
-                  },
-                  hint: {
+                  data: {
                     content: {
-                      type: 'text',
-                      data: {
-                        text: ['Hint', 'Hint Text', 'Hint Another Text'],
+                      text: 'Не важно',
+                    },
+                    hint: {
+                      content: {
+                        type: 'text',
+                        data: {
+                          text: ['Hint', 'Hint Text', 'Hint Another Text'],
+                        },
                       },
                     },
                   },
                 },
-              },
-            ],
+              ],
+              inputs: [
+                {
+                  data: {
+                    content: {
+                      placeholder: 'Введите сумму',
+                    },
+                  },
+                },
+              ],
+            },
           },
         },
       },

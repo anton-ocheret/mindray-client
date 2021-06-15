@@ -17,6 +17,7 @@
 <script>
   import BaseAutocomplete from '@shared/components/base/autocomplete';
   import BaseTextarea from '@shared/components/base/textarea';
+  import BaseButton from '@shared/components/base/button';
   import BaseSelect from '@shared/components/base/select';
   import BaseInput from '@shared/components/base/input';
 
@@ -25,6 +26,7 @@
     components: {
       BaseAutocomplete,
       BaseTextarea,
+      BaseButton,
       BaseSelect,
       BaseInput,
     },
