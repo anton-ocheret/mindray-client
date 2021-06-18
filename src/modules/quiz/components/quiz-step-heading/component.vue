@@ -1,5 +1,5 @@
 <template>
-  <h1 class="heading text-center">
+  <h1 class="heading">
     <span class="app-heading-text--lg" :class="$options.HINT_TEXT_POSITION_ELEMENT.NAME">
       {{ content.data.text.main }}
     </span>

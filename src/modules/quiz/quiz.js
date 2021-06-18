@@ -1,7 +1,7 @@
 export default {
   navigation: {
-    current: '1',
-    history: ['1'],
+    current: '7',
+    history: ['7'],
   },
   data: {
     '1': {
@@ -196,7 +196,7 @@ export default {
       },
       navigation: {
         next: '6',
-        skip: '1',
+        skip: '7',
       },
     },
     '6': {
@@ -253,8 +253,44 @@ export default {
         },
       },
       navigation: {
+        next: '7',
+        skip: '1',
+      },
+    },
+    '7': {
+      id: '7',
+      content: {
+        type: 'radio-list',
+        data: {
+          heading: {
+            content: {
+              data: {
+                text: {
+                  main: 'Heading text main radio list',
+                },
+              },
+            },
+          },
+          body: {
+            content: {
+              radios: [
+                {
+                  label: 'Radio 1',
+                },
+                {
+                  label: 'Radio 2',
+                },
+              ],
+            },
+          },
+          footer: {
+            content: {},
+          },
+        },
+      },
+      navigation: {
         next: '1',
-        skip: '2',
+        slip: '2',
       },
     },
   },
