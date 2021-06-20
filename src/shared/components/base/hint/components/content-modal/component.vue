@@ -3,7 +3,7 @@
     <img
       alt=""
       class="img"
-      :src="require('@images/hint-modal.jpg')"
+      :src="require(`@images/hint-modal-images/${content.img}`)"
     />
     <img
       v-if="toggleHandler"

@@ -445,6 +445,7 @@ export default {
                 type: 'modal',
                 data: {
                   text: ['Hint Text Paragraph 1', 'Hint Text Paragraph 2', 'Hint Text Paragraph 3'],
+                  img: 'hint-modal.jpg',
                 },
               },
             },
