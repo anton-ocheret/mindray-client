@@ -37,7 +37,7 @@
 
     @media(min-width: $xl) {
       left: calc(50% - 990px / 2);
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - 30px));
     }
   }
 
