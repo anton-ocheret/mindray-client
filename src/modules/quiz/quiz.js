@@ -1,7 +1,7 @@
 export default {
   navigation: {
-    current: '7',
-    history: ['7'],
+    current: '8',
+    history: ['8'],
   },
   data: {
     '1': {
@@ -254,13 +254,13 @@ export default {
       },
       navigation: {
         next: '7',
-        skip: '1',
+        skip: '8',
       },
     },
     '7': {
       id: '7',
       content: {
-        type: 'radio-list',
+        type: 'checkbox-list',
         data: {
           heading: {
             content: {
@@ -272,8 +272,17 @@ export default {
             },
           },
           body: {
+            options: {
+              cols: 2,
+            },
             content: {
-              radios: [
+              checkboxes: [
+                {
+                  label: 'Radio 1',
+                },
+                {
+                  label: 'Radio 2',
+                },
                 {
                   label: 'Radio 1',
                 },
@@ -284,7 +293,75 @@ export default {
             },
           },
           footer: {
-            content: {},
+            content: {
+              left: {
+                text: 'Примерная цена',
+              },
+              right: {
+                text: '500 тыс. руб.',
+              },
+            },
+          },
+        },
+      },
+      navigation: {
+        next: '8',
+        slip: '1',
+      },
+    },
+    '8': {
+      id: '8',
+      content: {
+        type: 'checkbox-list',
+        data: {
+          heading: {
+            content: {
+              data: {
+                text: {
+                  main: 'Heading text main radio list with options',
+                },
+              },
+            },
+          },
+          body: {
+            options: {
+              cols: 2,
+            },
+            content: {
+              notInList: {
+                link: {
+                  text: 'Другие Вопросы',
+                },
+              },
+              checkboxes: [
+                {
+                  label: 'Radio 1',
+                },
+                {
+                  label: 'Radio 2',
+                },
+                {
+                  label: 'Radio 1',
+                },
+                {
+                  label: 'Radio 2',
+                },
+              ],
+              additional: [
+                {
+                  label: 'Additional 1',
+                },
+                {
+                  label: 'Additional 2',
+                },
+                {
+                  label: 'Additional 1',
+                },
+                {
+                  label: 'Additional 2',
+                },
+              ],
+            },
           },
         },
       },
