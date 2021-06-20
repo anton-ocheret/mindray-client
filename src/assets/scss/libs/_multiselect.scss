@@ -502,6 +502,12 @@ fieldset[disabled] .multiselect {
   }
 }
 
+.base-select {
+  .multiselect__single {
+    padding: 0;
+  }
+}
+
 .base-autocomplete .multiselect__input
 .base-autocomplete .multiselect__single {
   padding-left: 10px;
