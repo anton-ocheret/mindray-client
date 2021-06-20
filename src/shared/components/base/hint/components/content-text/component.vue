@@ -2,8 +2,9 @@
   <div class="hint-content-text">
     <img
       v-if="toggleHandler"
+      alt=""
       class="close"
-      :src="require('@images/icons/icon-close.svg')" alt=""
+      :src="require('@images/icons/icon-close.svg')"
       @click="toggleHandler"
     />
     <p

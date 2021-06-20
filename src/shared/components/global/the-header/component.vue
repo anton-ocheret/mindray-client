@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
     <div class="logo" v-hover-rotate>
-      <img class="logo-outer" :src="require('@images/icons/logo-outer.svg')" />
+      <img class="logo-outer" :src="require('@images/icons/logo-outer.svg')" alt="" />
       <img class="hover-rotate logo-inner" :src="require('@images/icons/logo-inner.svg')" alt="" />
     </div>
 

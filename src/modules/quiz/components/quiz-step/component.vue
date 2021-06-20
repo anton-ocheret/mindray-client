@@ -78,8 +78,7 @@
     max-width: 1340px;
     z-index: 2;
 
-
-    @media(min-width: $md) {
+    @media(min-width: $lg) {
       max-width: 990px;
       width: calc(100% - 350px);
     }
@@ -124,13 +123,14 @@
 
   .wrapper-white-footer {
     flex-shrink: 0;
-    padding: 0 20px;
-    min-height: 100px;
+    padding: 20px;
+    min-height: 60px;
     display: flex;
     align-items: center;
     border-top: 1px solid $porcelain;
     @media(min-width: $md) {
       padding: 0 50px;
+      min-height: 100px;
     }
   }
 
