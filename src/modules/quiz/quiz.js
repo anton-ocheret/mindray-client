@@ -440,6 +440,14 @@ export default {
                 },
               },
             },
+            hint: {
+              content: {
+                type: 'modal',
+                data: {
+                  text: ['Hint Text Paragraph 1', 'Hint Text Paragraph 2', 'Hint Text Paragraph 3'],
+                },
+              },
+            },
           },
           body: {
             content: {
