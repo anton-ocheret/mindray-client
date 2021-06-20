@@ -1,7 +1,7 @@
 export default {
   navigation: {
-    current: '9',
-    history: ['9'],
+    current: '10',
+    history: ['10'],
   },
   data: {
     '1': {
@@ -367,7 +367,7 @@ export default {
       },
       navigation: {
         next: '9',
-        skip: '1',
+        skip: '10',
       },
     },
     '9': {
@@ -418,6 +418,46 @@ export default {
               right: {
                 text: '900 тыс. руб.',
               },
+            },
+          },
+        },
+      },
+      navigation: {
+        next: '10',
+        skip: '1',
+      },
+    },
+    '10': {
+      id: '10',
+      content: {
+        type: 'single-autocomplete-multiple',
+        data: {
+          heading: {
+            content: {
+              data: {
+                text: {
+                  main: 'Heading text main single autocomplete multiple',
+                },
+              },
+            },
+          },
+          body: {
+            content: {
+              placeholder: 'Single autocomplete placeholder',
+              options: [
+                { name: 'Option 1' },
+                { name: 'Option 2' },
+                { name: 'Option 3' },
+                { name: 'Option 4' },
+                { name: 'Option 5' },
+                { name: 'Option 6' },
+                { name: 'Option 7' },
+                { name: 'Option 8' },
+                { name: 'Option 9' },
+                { name: 'Option 10' },
+                { name: 'Option 11' },
+                { name: 'Option 12' },
+              ],
             },
           },
         },

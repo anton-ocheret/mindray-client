@@ -4,7 +4,10 @@
       class="wrapper"
       :class="{ 'flex-center': isStepContetnVerticallyCentered }"
     >
-      <div :class="{ 'wrapper-white': !isStepContetnVerticallyCentered }">
+      <div :class="{
+        'wrapper-white': !isStepContetnVerticallyCentered,
+        'flex-center': isStepContetnVerticallyCentered,
+      }">
         <quiz-step-heading
           :class="{ 'wrapper-white-heading': !isStepContetnVerticallyCentered }"
           :hint="currentStep.content.data.heading.hint"
@@ -78,7 +81,8 @@
     max-width: 1340px;
     z-index: 2;
 
-    @media(min-width: $lg) {
+
+    @media(min-width: $md) {
       max-width: 990px;
       width: calc(100% - 350px);
     }
@@ -123,19 +127,22 @@
 
   .wrapper-white-footer {
     flex-shrink: 0;
-    padding: 20px;
-    min-height: 60px;
+    padding: 0 20px;
+    min-height: 100px;
     display: flex;
     align-items: center;
     border-top: 1px solid $porcelain;
     @media(min-width: $md) {
       padding: 0 50px;
-      min-height: 100px;
     }
   }
 
   .flex-center {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
   }
 </style>

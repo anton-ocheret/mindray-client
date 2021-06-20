@@ -7,6 +7,7 @@
 </template>
 
 <script>
+  const ContentSingleAutocompleteMultiple = () => import(/* webpackChunkName: 'step-content-single-autocomplete-multiple' */ '@modules/quiz/components/quiz-step-content/components/content-single-autocomplete-multiple');
   const ContentSingleAutocomplete = () => import(/* webpackChunkName: 'step-content-single-autocomplete' */ '@modules/quiz/components/quiz-step-content/components/content-single-autocomplete');
   const ContentMultipleFields = () => import(/* webpackChunkName: 'step-content-multiple-fields' */ '@modules/quiz/components/quiz-step-content/components/content-multiple-fields');
   const ContentSingleTextarea = () => import(/* webpackChunkName: 'step-content-single-textarea' */ '@modules/quiz/components/quiz-step-content/components/content-single-textarea');
@@ -19,6 +20,7 @@
   export default {
     name: 'quiz-step-content',
     components: {
+      ContentSingleAutocompleteMultiple,
       ContentSingleAutocomplete,
       ContentMultipleFields,
       ContentSingleTextarea,
