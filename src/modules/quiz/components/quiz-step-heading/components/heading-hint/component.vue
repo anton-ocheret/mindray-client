@@ -3,6 +3,7 @@
     v-position-in-text="{ elementClass: textPositionElementClass }"
     class="heading-hint"
     :is-opened="isHintOpened"
+    :content-type="content.type"
     @base-hint:toggle="handleHintToggle"
   >
     <template #content="{ toggle }">
@@ -16,15 +17,17 @@
 </template>
 
 <script>
-  import BaseHint from '@shared/components/base/hint';
+  import BaseHintContentModal from '@shared/components/base/hint/components/content-modal';
   import BaseHintContentText from '@shared/components/base/hint/components/content-text';
+  import BaseHint from '@shared/components/base/hint';
   import { positionInText } from '@shared/directives';
 
   export default {
     name: 'heading-hint',
     components: {
-      BaseHint,
+      BaseHintContentModal,
       BaseHintContentText,
+      BaseHint,
     },
     directives: {
       positionInText,
@@ -55,9 +58,10 @@
     width: 14px;
     height: 14px;
     position: absolute;
+    margin-left: 4px;
+    margin-top: -4px;
     top: 0;
     opacity: 0;
-    transform: translate(0, -50%);
     transition: opacity .17s ease-in-out;
     
     @media(min-width: $md) {

@@ -47,11 +47,21 @@ export default {
     display: flex;
   }
 
-  .content-default {
+  .content-default,
+  .content-text {
     position: absolute;
     top: 50%;
     left: 0;
     transform: translate(calc(-100% - 14px), -50%)
+  }
+
+  .content-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
   }
 
   .activator-image {
