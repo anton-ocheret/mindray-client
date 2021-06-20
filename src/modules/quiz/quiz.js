@@ -1,7 +1,7 @@
 export default {
   navigation: {
-    current: '8',
-    history: ['8'],
+    current: '9',
+    history: ['9'],
   },
   data: {
     '1': {
@@ -306,7 +306,7 @@ export default {
       },
       navigation: {
         next: '8',
-        slip: '1',
+        skip: '9',
       },
     },
     '8': {
@@ -318,7 +318,7 @@ export default {
             content: {
               data: {
                 text: {
-                  main: 'Heading text main radio list with options',
+                  main: 'Heading text main checkbox list with options',
                 },
               },
             },
@@ -335,16 +335,16 @@ export default {
               },
               checkboxes: [
                 {
-                  label: 'Radio 1',
+                  label: 'Checkbox 1',
                 },
                 {
-                  label: 'Radio 2',
+                  label: 'Checkbox 2',
                 },
                 {
-                  label: 'Radio 1',
+                  label: 'Checkbox 1',
                 },
                 {
-                  label: 'Radio 2',
+                  label: 'Checkbox 2',
                 },
               ],
               additional: [
@@ -366,8 +366,65 @@ export default {
         },
       },
       navigation: {
+        next: '9',
+        skip: '1',
+      },
+    },
+    '9': {
+      id: '9',
+      content: {
+        type: 'radio-list',
+        data: {
+          heading: {
+            content: {
+              data: {
+                text: {
+                  main: 'Heading text main radio list with options',
+                },
+              },
+            },
+          },
+          body: {
+            options: {
+              cols: 2,
+            },
+            content: {
+              notInList: {
+                link: {
+                  text: 'Поиск',
+                },
+              },
+              radios: [
+                {
+                  label: 'Radio 1',
+                },
+                {
+                  label: 'Radio 2',
+                },
+                {
+                  label: 'Radio 1',
+                },
+                {
+                  label: 'Radio 2',
+                },
+              ],
+            },
+          },
+          footer: {
+            content: {
+              left: {
+                text: 'Примерная цена',
+              },
+              right: {
+                text: '900 тыс. руб.',
+              },
+            },
+          },
+        },
+      },
+      navigation: {
         next: '1',
-        slip: '2',
+        skip: '2',
       },
     },
   },
