@@ -1,5 +1,7 @@
 <template>
   <multiselect
+    class="base-autocomplete"
+    :class="[$attrs.multiple && 'multiple']"
     v-bind="$attrs"
     v-on="$listeners"
     :show-labels="false"

@@ -1,9 +1,11 @@
 <template>
-  <div class="single-select">
-    <base-select
-      :options="content.options"
-      v-model="value"
+  <div class="single-autocomplete-multiple">
+    <base-autocomplete
       :placeholder="content.placeholder"
+      :options="content.options"
+      :multiple="true"
+      class="app-text"
+      v-model="value"
       track-by="name"
       label="name"
     />
@@ -11,12 +13,12 @@
 </template>
 
 <script>
-  import BaseSelect from '@shared/components/base/select';
+  import BaseAutocomplete from '@shared/components/base/autocomplete';
 
   export default {
-    name: 'content-single-select',
+    name: 'content-single-autocomplete-multiple',
     components: {
-      BaseSelect,
+      BaseAutocomplete,
     },
     props: {
       content: {
@@ -30,8 +32,8 @@
   };
 </script>
 
-<style lang="scss">
-  .single-select {
+<style lang="scss" scoped>
+  .single-autocomplete-multiple {
     max-width: $field-max-width;
     width: 100%;
     margin-top: 20px;
