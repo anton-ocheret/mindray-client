@@ -1,6 +1,6 @@
 export default {
   navigation: {
-    current: '1',
+    current: '2',
     history: ['1'],
   },
   data: {
@@ -13,7 +13,7 @@ export default {
             content: {
               data: {
                 text: {
-                  main: 'Heading text main buttons list!!!!!!!!!!!!',
+                  main: 'Heading text main buttons list!',
                   sub: 'Heading text sub',
                 },
               },
