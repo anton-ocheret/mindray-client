@@ -1,5 +1,8 @@
 # mindray-client
 
+## Site URL
+https://mindray-92800.web.app/quiz
+
 ## Project setup
 ```
 yarn install
