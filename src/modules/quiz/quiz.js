@@ -1,7 +1,7 @@
 export default {
   navigation: {
-    current: '2',
-    history: ['1'],
+    current: '11',
+    history: ['11'],
   },
   data: {
     '1': {
@@ -424,7 +424,7 @@ export default {
       },
       navigation: {
         next: '10',
-        skip: '1',
+        skip: '11',
       },
     },
     '10': {
@@ -466,6 +466,68 @@ export default {
                 { name: 'Option 10' },
                 { name: 'Option 11' },
                 { name: 'Option 12' },
+              ],
+            },
+          },
+        },
+      },
+      navigation: {
+        next: '11',
+        skip: '1',
+      },
+    },
+    '11': {
+      id: '11',
+      content: {
+        type: 'slider',
+        data: {
+          heading: {
+            content: {
+              data: {
+                text: {
+                  main: 'Slider Step',
+                  sup: 'База знаний',
+                },
+              },
+            },
+          },
+          body: {
+            content: {
+              heading: 'Проблема с апертурой (излучающая поверхность)',
+              slides: [
+                {
+                  title: '1. Гель под апертуру',
+                  image: {
+                    x1: 'slider-example.jpg',
+                    x2: 'slider-example-2x.jpg',
+                  },
+                  modal: {
+                    image: {
+                      x1: 'slider-example.jpg',
+                      x2: 'slider-example.jpg',  
+                    },
+                  },
+                },
+                {
+                  title: '2. Гель под апертуру',
+                  image: {
+                    x1: 'slider-example.jpg',
+                    x2: 'slider-example-2x.jpg',
+                  },
+                  modal: {
+                    image: {
+                      x1: 'slider-example.jpg',
+                      x2: 'slider-example.jpg',  
+                    },
+                  },
+                },
+                {
+                  title: '3. Гель под апертуру',
+                  image: {
+                    x1: 'slider-example.jpg',
+                    x2: 'slider-example-2x.jpg',
+                  },
+                },
               ],
             },
           },

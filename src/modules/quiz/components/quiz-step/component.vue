@@ -84,6 +84,9 @@
 
     @media(min-width: $md) {
       max-width: 990px;
+    }
+
+    @media(min-width: $lg) {
       width: calc(100% - 350px);
     }
   }
