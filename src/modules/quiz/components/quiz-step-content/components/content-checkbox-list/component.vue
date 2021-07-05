@@ -10,6 +10,7 @@
         <base-checkbox
           :id="`checkbox-list-item-${index}`"
           :label="checkbox.label"
+          @base-checkbox:toggle="(checked) => handleCheckboxClick(checkbox.next, checked)"
         />
       </li>
     </ul>
@@ -95,6 +96,11 @@
     data: () => ({
       isAdditionalOptionsOpened: false,
     }),
+    methods: {
+      handleCheckboxClick(nextStepId, checked) {
+        this.$root.$emit('quiz:update-preliminary-step-id', checked && nextStepId);
+      },
+    },
   };
 </script>
 
