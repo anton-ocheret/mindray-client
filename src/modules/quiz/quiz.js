@@ -1,7 +1,7 @@
 export default {
   navigation: {
-    current: '11',
-    history: ['11'],
+    current: '1',
+    history: ['1'],
   },
   data: {
     '1': {
@@ -266,7 +266,7 @@ export default {
             content: {
               data: {
                 text: {
-                  main: 'Heading text main radio list',
+                  main: 'Heading text main checkbox list',
                 },
               },
             },
@@ -278,16 +278,20 @@ export default {
             content: {
               checkboxes: [
                 {
-                  label: 'Radio 1',
+                  label: 'Checkbox 1',
+                  next: '2',
                 },
                 {
-                  label: 'Radio 2',
+                  label: 'Checkbox 2',
+                  next: '3',
                 },
                 {
-                  label: 'Radio 1',
+                  label: 'Checkbox 1',
+                  next: '4',
                 },
                 {
-                  label: 'Radio 2',
+                  label: 'Checkbox 2',
+                  next: '5',
                 },
               ],
             },
@@ -305,7 +309,7 @@ export default {
         },
       },
       navigation: {
-        next: '8',
+        // next: '8',
         skip: '9',
       },
     },
@@ -397,15 +401,19 @@ export default {
               radios: [
                 {
                   label: 'Radio 1',
+                  next: '2',
                 },
                 {
                   label: 'Radio 2',
+                  next: '5',
                 },
                 {
                   label: 'Radio 1',
+                  next: '6',
                 },
                 {
                   label: 'Radio 2',
+                  next: '1',
                 },
               ],
             },

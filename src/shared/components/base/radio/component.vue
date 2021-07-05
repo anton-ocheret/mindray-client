@@ -46,7 +46,7 @@ export default {
 
   methods: {
     onChange(event) {
-      this.$emit('toggle-checkbox', event.target.checked);
+      this.$emit('base-radio:toggle', event.target.checked);
     },
   },
 };

@@ -10,7 +10,8 @@
         <base-radio
           :id="`radio-list-item-${index}`"
           :label="radio.label"
-          name="rad"
+          name="radio"
+          @base-radio:toggle="(checked) => handleRadioClick(radio.next, checked)"
         />
       </li>
     </ul>
@@ -49,6 +50,11 @@
       options: {
         type: Object,
         default: () => ({}),
+      },
+    },
+    methods: {
+      handleRadioClick(nextStepId, checked) {
+        this.$root.$emit('quiz:update-preliminary-step-id', checked && nextStepId);
       },
     },
   };
