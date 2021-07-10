@@ -5,11 +5,11 @@
       :step-back-handler="() => updateStep(previousStepId, false)"
     />
     <base-button
-      v-if="navigation.next"
+      v-if="isNextStepButtonVisible"
       class="control app-text app-text--md"
       kind="bordered"
       size="small"
-      @click="() => updateStep(navigation.next)"
+      @click="handleStepNext"
     >
       Далее
     </base-button>
@@ -50,6 +50,31 @@
         type: Function,
         required: true,
       },
+    },
+    data() {
+      return {
+        preliminaryNextStepId: null,
+      };
+    },
+    computed: {
+      isNextStepButtonVisible() {
+        return Boolean(this.navigation.next) || Boolean(this.preliminaryNextStepId);
+      },
+    },
+    methods: {
+      updatePreliminaryNextStepId(nextStepId) {
+        this.preliminaryNextStepId = nextStepId;
+      },
+      handleStepNext() {
+        this.updateStep(this.preliminaryNextStepId || this.navigation.next);
+        this.updatePreliminaryNextStepId(null);
+      },
+    },
+     mounted() {
+      this.$root.$on('quiz:update-preliminary-step-id', this.updatePreliminaryNextStepId);
+    },
+    beforeDestroy() {
+      this.$root.$off('quiz:update-preliminary-step-id', this.updatePreliminaryNextStepId);
     },
   };
 </script>

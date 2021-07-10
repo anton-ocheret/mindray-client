@@ -1,11 +1,17 @@
 <template>
   <h1 class="heading">
+    <span
+      v-if="content.data.text.sup"
+      class="app-heading-sup app-text app-text--md"
+    >
+      {{ content.data.text.sup }}
+    </span>
     <span class="app-heading-text--lg" :class="$options.HINT_TEXT_POSITION_ELEMENT.NAME">
       {{ content.data.text.main }}
     </span>
     <span
       v-if="content.data.text.sub"
-      class="sub-heading-text app-sub-heading-text--lg"
+      class="app-heading-sub app-sub-heading-text--lg"
     >
       {{ content.data.text.sub }}
     </span>
@@ -50,10 +56,17 @@
       margin-bottom: 20px;
     }
   }
-  .sub-heading-text {
+  .app-heading-sub {
     margin-top: 20px;
     @media(min-width: $md) {
       margin-top: 25px;
+    }
+  }
+  .app-heading-sup {
+    color: $cornflower-blue;
+    margin-bottom: 5px;
+    @media(min-width: $md) {
+      margin-top: 10;
     }
   }
 </style>

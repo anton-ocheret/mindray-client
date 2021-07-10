@@ -1,6 +1,6 @@
 export default {
   navigation: {
-    current: '2',
+    current: '1',
     history: ['1'],
   },
   data: {
@@ -266,7 +266,7 @@ export default {
             content: {
               data: {
                 text: {
-                  main: 'Heading text main radio list',
+                  main: 'Heading text main checkbox list',
                 },
               },
             },
@@ -278,16 +278,20 @@ export default {
             content: {
               checkboxes: [
                 {
-                  label: 'Radio 1',
+                  label: 'Checkbox 1',
+                  next: '2',
                 },
                 {
-                  label: 'Radio 2',
+                  label: 'Checkbox 2',
+                  next: '3',
                 },
                 {
-                  label: 'Radio 1',
+                  label: 'Checkbox 1',
+                  next: '4',
                 },
                 {
-                  label: 'Radio 2',
+                  label: 'Checkbox 2',
+                  next: '5',
                 },
               ],
             },
@@ -305,7 +309,7 @@ export default {
         },
       },
       navigation: {
-        next: '8',
+        // next: '8',
         skip: '9',
       },
     },
@@ -397,15 +401,19 @@ export default {
               radios: [
                 {
                   label: 'Radio 1',
+                  next: '2',
                 },
                 {
                   label: 'Radio 2',
+                  next: '5',
                 },
                 {
                   label: 'Radio 1',
+                  next: '6',
                 },
                 {
                   label: 'Radio 2',
+                  next: '1',
                 },
               ],
             },
@@ -424,7 +432,7 @@ export default {
       },
       navigation: {
         next: '10',
-        skip: '1',
+        skip: '11',
       },
     },
     '10': {
@@ -466,6 +474,68 @@ export default {
                 { name: 'Option 10' },
                 { name: 'Option 11' },
                 { name: 'Option 12' },
+              ],
+            },
+          },
+        },
+      },
+      navigation: {
+        next: '11',
+        skip: '1',
+      },
+    },
+    '11': {
+      id: '11',
+      content: {
+        type: 'slider',
+        data: {
+          heading: {
+            content: {
+              data: {
+                text: {
+                  main: 'Slider Step',
+                  sup: 'База знаний',
+                },
+              },
+            },
+          },
+          body: {
+            content: {
+              heading: 'Проблема с апертурой (излучающая поверхность)',
+              slides: [
+                {
+                  title: '1. Гель под апертуру',
+                  image: {
+                    x1: 'slider-example.jpg',
+                    x2: 'slider-example-2x.jpg',
+                  },
+                  modal: {
+                    image: {
+                      x1: 'slider-example.jpg',
+                      x2: 'slider-example.jpg',  
+                    },
+                  },
+                },
+                {
+                  title: '2. Гель под апертуру',
+                  image: {
+                    x1: 'slider-example.jpg',
+                    x2: 'slider-example-2x.jpg',
+                  },
+                  modal: {
+                    image: {
+                      x1: 'slider-example.jpg',
+                      x2: 'slider-example.jpg',  
+                    },
+                  },
+                },
+                {
+                  title: '3. Гель под апертуру',
+                  image: {
+                    x1: 'slider-example.jpg',
+                    x2: 'slider-example-2x.jpg',
+                  },
+                },
               ],
             },
           },

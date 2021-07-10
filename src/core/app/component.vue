@@ -1,8 +1,11 @@
 <template>
+  <div>
   <div id="app">
     <component :is="layout">
       <router-view />
     </component>
+    <portal-target name="modal" />
+  </div>
   </div>
 </template>
 
