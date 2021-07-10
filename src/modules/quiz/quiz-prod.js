@@ -960,7 +960,7 @@ export default {
       '19': {
         id: '19',
         content: {
-          type: 'single-input',
+          type: 'single-autocomplete-multiple',
           data: {
             heading: {
               content: {
@@ -970,10 +970,33 @@ export default {
                   },
                 },
               },
+              hint: {
+                content: {
+                  type: 'modal',
+                  data: {
+                    text: ['Серийный номер всегда расположен сзади аппарата в нижней части (см. фото)'],
+                    img: 'hint-modal.jpg',
+                  },
+                },
+              },
             },
             body: {
               content: {
                 placeholder: 'Введите серийный номер',
+                options: [
+                  { name: 'Option 1' },
+                  { name: 'Option 2' },
+                  { name: 'Option 3' },
+                  { name: 'Option 4' },
+                  { name: 'Option 5' },
+                  { name: 'Option 6' },
+                  { name: 'Option 7' },
+                  { name: 'Option 8' },
+                  { name: 'Option 9' },
+                  { name: 'Option 10' },
+                  { name: 'Option 11' },
+                  { name: 'Option 12' },
+                ],
               },
             },
           },
@@ -3094,32 +3117,64 @@ export default {
       // ветка от блока "Купить запчасть" от фрейма 44 всё
 
       // ветка от блока "С чем связана Ваша проблема?" фрейма 48
-      // "Возможные причины" фрейм 51. Пока только схематично так как слайдера нет
+      // "Возможные причины" фрейм 51. (slider)
       '61': {
         id: '61',
         content: {
-          type: 'checkbox-list',
+          type: 'slider',
           data: {
             heading: {
               content: {
                 data: {
                   text: {
                     main: 'Возможные причины:',
+                    sup: 'База знаний',
                   },
                 },
               },
             },
             body: {
-              options: {
-                cols: 2,
-              },
               content: {
-                checkboxes: [
+                heading: 'Проблема с апертурой (излучающая поверхность)',
+                slides: [
                   {
-                    label: 'Проблема с пьезокристаллoм',
+                    title: '1. Гель под апертуру',
+                    image: {
+                      x1: 'slider-example.jpg',
+                      x2: 'slider-example-2x.jpg',
+                    },
+                    modal: {
+                      image: {
+                        x1: 'slider-example.jpg',
+                        x2: 'slider-example.jpg',  
+                      },
+                    },
                   },
                   {
-                    label: 'тут должен быть слайдер',
+                    title: '2. Гель под апертуру',
+                    image: {
+                      x1: 'slider-example.jpg',
+                      x2: 'slider-example-2x.jpg',
+                    },
+                    modal: {
+                      image: {
+                        x1: 'slider-example.jpg',
+                        x2: 'slider-example.jpg',  
+                      },
+                    },
+                  },
+                  {
+                    title: '3. Гель под апертуру',
+                    image: {
+                      x1: 'slider-example.jpg',
+                      x2: 'slider-example-2x.jpg',
+                    },
+                    modal: {
+                      image: {
+                        x1: 'slider-example.jpg',
+                        x2: 'slider-example.jpg',  
+                      },
+                    },
                   },
                 ],
               },
@@ -3134,28 +3189,60 @@ export default {
       '62': {
         id: '62',
         content: {
-          type: 'checkbox-list',
+          type: 'slider',
           data: {
             heading: {
               content: {
                 data: {
                   text: {
-                    main: 'Возможные причины:',
+                    main: 'Возможные решения:',
+                    sup: 'База знаний',
                   },
                 },
               },
             },
             body: {
-              options: {
-                cols: 1,
-              },
               content: {
-                checkboxes: [
+                heading: 'Проблема с апертурой (излучающая поверхность)',
+                slides: [
                   {
-                    label: 'Проблема с пьезокристаллoм',
+                    title: '1. Гель под апертуру',
+                    image: {
+                      x1: 'slider-example.jpg',
+                      x2: 'slider-example-2x.jpg',
+                    },
+                    modal: {
+                      image: {
+                        x1: 'slider-example.jpg',
+                        x2: 'slider-example.jpg',  
+                      },
+                    },
                   },
                   {
-                    label: 'Тут должен быть слайдер',
+                    title: '2. Гель под апертуру',
+                    image: {
+                      x1: 'slider-example.jpg',
+                      x2: 'slider-example-2x.jpg',
+                    },
+                    modal: {
+                      image: {
+                        x1: 'slider-example.jpg',
+                        x2: 'slider-example.jpg',  
+                      },
+                    },
+                  },
+                  {
+                    title: '3. Гель под апертуру',
+                    image: {
+                      x1: 'slider-example.jpg',
+                      x2: 'slider-example-2x.jpg',
+                    },
+                    modal: {
+                      image: {
+                        x1: 'slider-example.jpg',
+                        x2: 'slider-example.jpg',  
+                      },
+                    },
                   },
                 ],
               },
