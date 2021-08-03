@@ -34,11 +34,6 @@
     position: fixed;
     top: 140px;
     left: 35px;
-
-    @media(min-width: $xl) {
-      left: calc(50% - 990px / 2);
-      transform: translateX(calc(-100% - 30px));
-    }
   }
 
   .app-text {
