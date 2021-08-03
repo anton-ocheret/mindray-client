@@ -2,7 +2,7 @@
   <div class="quiz-step">
     <div
       class="wrapper"
-      :class="{ 'flex-center': isStepContetnVerticallyCentered }"
+      :class="{ 'flex-center text-center': isStepContetnVerticallyCentered }"
     >
       <div :class="{
         'wrapper-white': !isStepContetnVerticallyCentered,
@@ -146,6 +146,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
   }
 </style>
