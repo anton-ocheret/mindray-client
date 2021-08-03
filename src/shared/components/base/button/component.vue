@@ -67,7 +67,10 @@
     }
 
     &.small {
-      padding: 13px 35px;
+      padding: 13px 20px;
+      @media(min-width: $sm) {
+        padding: 13px 35px;
+      }
     }
 
     &.smallest {

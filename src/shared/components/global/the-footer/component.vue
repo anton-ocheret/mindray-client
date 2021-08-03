@@ -27,7 +27,7 @@
         </div>
         <div class="social">
           <base-button
-            class="social-link app-text"
+            class="social-link app-text app-text--md"
             kind="inverse"
             size="small"
           >
@@ -43,7 +43,7 @@
             Telegram
           </base-button>
           <base-button
-            class="social-link"
+            class="social-link app-text app-text--md"
             kind="inverse"
             size="small"
           >
@@ -51,7 +51,7 @@
             Viber
           </base-button>
           <base-button
-            class="social-link"
+            class="social-link app-text app-text--md"
             kind="inverse"
             size="small"
           >
