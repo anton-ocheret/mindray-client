@@ -73,8 +73,8 @@ export default {
     position: relative;
 
     @media(min-width: $md) {
-      width: 60px;
-      height: 60px;
+      width: 45px;
+      height: 45px;
     }
 
     img {
