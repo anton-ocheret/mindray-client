@@ -147,4 +147,8 @@
     justify-content: center;
     align-items: center;
   }
+
+  .text-center {
+    text-align: center;
+  }
 </style>
