@@ -6,4 +6,7 @@ export default {
   SINGLE_SELECT: 'single-select',
   SINGLE_INPUT: 'single-input',
   BUTTONS_LIST: 'buttons-list',
+  CHECKBOX_LIST: 'checkbox-list',
+  RADIO_LIST: 'radio-list',
+  SLIDER: 'slider',
 };

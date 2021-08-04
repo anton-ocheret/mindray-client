@@ -2,25 +2,32 @@
   <div class="quiz-step">
     <div
       class="wrapper"
-      :class="{ 'flex-center text-center': isStepContetnVerticallyCentered }"
-    >
-      <div :class="{
-        'wrapper-white': !isStepContetnVerticallyCentered,
+      :class="{
         'flex-center': isStepContetnVerticallyCentered,
-      }">
+        'text-center': !isStepContentFilledType,
+      }"
+    >
+      <div
+        class="wrapper-content"
+        :class="{
+          'wrapper-white': isStepContentFilledType,
+          'text-center': !isStepContentFilledType,
+          'flex-center': isStepContetnVerticallyCentered,
+        }"
+      >
         <quiz-step-heading
-          :class="{ 'wrapper-white-heading': !isStepContetnVerticallyCentered }"
+          :class="{ 'wrapper-white-heading': isStepContentFilledType }"
           :hint="currentStep.content.data.heading.hint"
           :content="currentStep.content.data.heading.content"
         />
         <quiz-step-content
-          :class="{ 'wrapper-white-content': !isStepContetnVerticallyCentered }"
+          :class="{ 'wrapper-white-content': isStepContentFilledType }"
           :type="currentStep.content.type"
           :data="currentStep.content.data.body"
         />
         <quiz-step-footer
           v-if="currentStep.content.data.footer"
-          :class="{ 'wrapper-white-footer': !isStepContetnVerticallyCentered }"
+          :class="{ 'wrapper-white-footer': isStepContentFilledType }"
           :data="currentStep.content.data.footer"
         />
       </div>
@@ -38,7 +45,7 @@
   import QuizStepHeading from '@modules/quiz/components/quiz-step-heading';
   import QuizStepContent from '@modules/quiz/components/quiz-step-content';
   import QuizStepFooter from '@modules/quiz/components/quiz-step-footer';
-  import { STEP_CONTENT_CENTERED_TYPES } from '@modules/quiz/constants';
+  import { STEP_CONTENT_CENTERED_TYPES, STEP_CONTENT_FILLED_TYPES } from '@modules/quiz/constants';
 
   export default {
     name: 'quiz-step',
@@ -65,6 +72,9 @@
     computed: {
       isStepContetnVerticallyCentered() {
         return STEP_CONTENT_CENTERED_TYPES.includes(this.currentStep.content.type);
+      },
+      isStepContentFilledType() {
+        return STEP_CONTENT_FILLED_TYPES.includes(this.currentStep.content.type);
       },
     },
   };
@@ -94,6 +104,13 @@
   .wrapper {
     width: 100%;
     display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .wrapper-content {
+    display: flex;
+    align-items: center;
     flex-direction: column;
   }
 

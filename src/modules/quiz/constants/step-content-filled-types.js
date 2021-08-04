@@ -1,0 +1,7 @@
+import STEP_CONTENT_TYPES from './step-content-types';
+
+export default [
+  STEP_CONTENT_TYPES.CHECKBOX_LIST,
+  STEP_CONTENT_TYPES.RADIO_LIST,
+  STEP_CONTENT_TYPES.SLIDER,
+];
