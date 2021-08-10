@@ -289,18 +289,10 @@
       margin-left: auto;
       margin-right: auto;
       opacity: 0;
+      transition: opacity .65s linear;
 
-      .default & {
+      .footer-opened & {
         opacity: 1;
-        transition: opacity 0 linear;
-        transition-delay: 0;
-      }
-
-      .small & {
-        margin-top: 15px;
-        opacity: 1;
-        transition: opacity 0 linear;
-        transition-delay: 1s;
       }
     }
   }
