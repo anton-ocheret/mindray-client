@@ -10,12 +10,20 @@
 </template>
 
 <script>
-  import { quiz } from '@modules/quiz';
   import QuizStep from '@modules/quiz/components/quiz-step';
+
+  import { global } from '@shared/mixins/store';
+  import { quiz } from '@modules/quiz';
   
   export default {
     name: 'Quiz',
     components: { QuizStep },
+    mixins: [global],
+    watch: {
+      currentStepIndex(nextIndex, prevIndex) {
+        this.updateFooterKind({ nextIndex, prevIndex });
+      },
+    },
     data: () => ({
       quiz,
     }),
@@ -23,9 +31,11 @@
       currentStep() {
         return this.quiz.data[quiz.navigation.current];
       },
+      currentStepIndex() {
+        return this.quiz.navigation.history.lastIndexOf(this.quiz.navigation.current);
+      },
       previousStepId() {
-        const activeStepIndex = this.quiz.navigation.history.lastIndexOf(this.quiz.navigation.current);
-        return this.quiz.navigation.history[activeStepIndex - 1];
+        return this.quiz.navigation.history[this.currentStepIndex - 1];
       },
     },
     methods: {

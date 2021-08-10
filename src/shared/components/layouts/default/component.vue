@@ -5,7 +5,7 @@
     <main class="main">
       <slot></slot>
     </main>
-    <the-footer />
+    <the-footer :kind="footer.kind" />
   </div>
 </template>
 
@@ -14,8 +14,11 @@
   import TheHeader from '@shared/components/global/the-header';
   import TheFooter from '@shared/components/global/the-footer';
 
+  import { global } from '@shared/mixins/store';
+
   export default {
     name: 'layout-default',
+    mixins: [global],
     components: {
       TheBackground,
       TheHeader,
