@@ -283,12 +283,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    opacity: 0;
 
     @media(min-width: $md) {
       margin-top: 70px;
       margin-left: auto;
       margin-right: auto;
+      opacity: 0;
 
       .default & {
         opacity: 1;
