@@ -110,7 +110,7 @@
     right: 0;
     z-index: 100;
     pointer-events: none;
-    transition: transform .6s cubic-bezier(.35,.755,.42,.95),box-shadow .6s cubic-bezier(.35,.755,.42,.95);
+    transition: transform .6s cubic-bezier(.35,.755,.42,.95), box-shadow .6s cubic-bezier(.35,.755,.42,.95);
   }
 
   .background {
@@ -152,7 +152,6 @@
   }
 
   .content {
-    transition: all .2s linear;
     position: relative;
     width: 100%;
     pointer-events: auto;
@@ -197,8 +196,13 @@
       transform: translate3d(0, calc(100% - 65px), 0);
 
       @media(min-width: $md) {
-        background-size: auto;
-        transform: translate3d(0, calc(100% - 86px), 0);
+        padding-top: 46px;
+        background-size: 1130px;
+        transform: translate3d(0, calc(100% - 70px), 0);
+
+        &:hover {
+          transform: translate3d(0, calc(100% - 80px), 0);
+        }
 
         .socia {
           margin-top: 30px !important;
@@ -208,7 +212,7 @@
           content: '';
           position: absolute;
           left: 0;
-          top: 150px;
+          top: 136px;
           transform: translateY(-100%);
           height: 100px;
           width: 100%;
@@ -225,6 +229,10 @@
 
     @media(min-width: $md) {
       padding: 0 $padding-desktop-x 40px;
+
+      .small & {
+        padding-bottom: 5px;
+      }
     }
   }
 
@@ -275,11 +283,25 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    opacity: 0;
 
     @media(min-width: $md) {
       margin-top: 70px;
       margin-left: auto;
       margin-right: auto;
+
+      .default & {
+        opacity: 1;
+        transition: opacity 0 linear;
+        transition-delay: 0;
+      }
+
+      .small & {
+        margin-top: 15px;
+        opacity: 1;
+        transition: opacity 0 linear;
+        transition-delay: 1s;
+      }
     }
   }
 
@@ -294,17 +316,27 @@
     left: 50%;
     transform: translateX(-50%);
 
+    @media(min-width: $md) {
+      width: 60px;
+      height: 60px;
+      top: 22px;
+
+      .small & {
+        top: 16px;
+        height: 36px;
+        width: 36px;
+
+        & .polygon {
+          width: 81%;
+        }
+      }
+    }
+
     img {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-    }
-
-    @media(min-width: $md) {
-      width: 60px;
-      height: 60px;
-      top: 22px;
     }
 
     .polygon {
