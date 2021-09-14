@@ -1,7 +1,7 @@
 export default {
     navigation: {
         current: '44',
-        history: ['1'],
+        history: ['44'],
     },
     data: {
       // Привет я медБот (buttons-list)
