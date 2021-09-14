@@ -1028,7 +1028,7 @@ export default {
                 buttons: [
                   {
                     navigation: {
-                      next: '1',
+                      next: '44',
                     },
                     data: {
                       content: {
