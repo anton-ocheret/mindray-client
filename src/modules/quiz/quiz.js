@@ -65,6 +65,7 @@ export default {
       navigation: {
         next: '2',
         skip: '3',
+        further: '3',
       },
     },
     '2': {
