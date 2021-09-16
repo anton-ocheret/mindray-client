@@ -1,8 +1,11 @@
 <template>
   <header class="app-header">
     <div class="logo" v-hover-rotate>
-      <img class="logo-outer" :src="require('@images/icons/logo-outer.svg')" alt="" />
-      <img class="hover-rotate logo-inner" :src="require('@images/icons/logo-inner.svg')" alt="" />
+      <!-- Добавил ссылку-переход на лендос  -->
+      <a href="https://service.medford.pro/" target="_blank">
+        <img class="logo-outer" :src="require('@images/icons/logo-outer.svg')" alt="" /> 
+        <img class="hover-rotate logo-inner" :src="require('@images/icons/logo-inner.svg')" alt="" />
+      </a>
     </div>
 
     <div class="app-header__center d-md-flex">

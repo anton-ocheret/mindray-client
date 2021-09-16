@@ -1,9 +1,14 @@
 <template>
   <div class="navigation">
-    <quiz-step-back
-      v-if="previousStepId"
-      :step-back-handler="() => updateStep(previousStepId, false)"
+    <quiz-step-back 
+      v-if="previousStepId" 
+      :step-back-handler="() => updateStep(previousStepId, false)"  
     />
+    <quiz-step-back
+      v-if="!previousStepId || previousStepId === '20' || previousStepId === '21'"  
+      :step-back-handler="() => {updateStep(navigation.landing())}"  
+    />
+
     <base-button
       v-if="isNextStepButtonVisible"
       class="control app-text app-text--md"

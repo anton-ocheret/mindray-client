@@ -8,10 +8,11 @@
         </div>
         <div class="nav">
           <div class="part d-md-flex">
-            <a href="#" class="footer-link app-text app-text--sm">
+            <!-- Убрал иконки "войти" и "образовние" -->
+            <!-- <a href="#" class="footer-link app-text app-text--sm">
               <img class="link-icon" :src="require('@images/icons/icon-education.svg')" alt="" />
               <span class="footer-link-text">Образование</span>
-            </a>
+            </a> -->
           </div>
           
           <div class="part">
@@ -19,20 +20,21 @@
           </div>
 
           <div class="part d-md-flex">
-            <a href="#" class="footer-link app-text app-text--sm">
+            <!-- <a href="#" class="footer-link app-text app-text--sm">
               <img class="link-icon" :src="require('@images/icons/icon-user.svg')" alt="" />
               <span class="footer-link-text">Войти</span>
-            </a>
+            </a> -->
           </div>
         </div>
         <div class="social">
+          <!-- Добавил ссылки, пока без адресов, в кнопки с соц. сетями -->
           <base-button
             class="social-link app-text"
             kind="inverse"
             size="small"
           >
             <img class="social-link-icon" :src="require('@images/icons/icon-whatsapp.svg')" alt="" />
-            <span>WhatsApp</span>
+            <a href="https://www.whatsapp.com/?lang=ru" target="_blank"><span>WhatsApp</span></a> 
           </base-button>
           <base-button
             class="social-link"
@@ -40,7 +42,7 @@
             size="small"
           >
             <img class="social-link-icon" :src="require('@images/icons/icon-telegram.svg')" alt="" />
-            Telegram
+            <a href="" target="_blank">Telegram</a> 
           </base-button>
           <base-button
             class="social-link"
@@ -48,7 +50,7 @@
             size="small"
           >
             <img class="social-link-icon" :src="require('@images/icons/icon-viber.svg')" alt="" />
-            Viber
+            <a href="" target="_blank">Viber</a> 
           </base-button>
           <base-button
             class="social-link"
@@ -56,7 +58,7 @@
             size="small"
           >
             <img class="social-link-icon" :src="require('@images/icons/icon-chat.svg')" alt="" />
-            Online-чат
+            <a href="" target="_blank">Online-чат</a> 
           </base-button>
         </div>
 

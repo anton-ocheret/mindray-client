@@ -2288,6 +2288,7 @@ export default {
         // Кнопка "Пропустить" на фрейм 12 "Укажите, пожалуйста, примерный бюджет, на который вы рассчитываете"
         navigation: {
           skip: '45',
+          landing: function () {return window.location.href = 'https://service.medford.pro/';},
         },
       },
       // "Выберите тип оборудования" фрейм 32 (buttons-list)
