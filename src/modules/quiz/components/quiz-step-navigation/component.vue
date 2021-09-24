@@ -6,9 +6,12 @@
     />
     <quiz-step-back
       v-if="!previousStepId || previousStepId === '20' || previousStepId === '21'"  
-      :step-back-handler="() => {updateStep(navigation.landing())}"  
+      :step-back-handler="() => navigation.landing()"  
     />
-
+    <quiz-step-back
+      v-if="previousStepId === '20'"  
+      :step-back-handler="() => updateStep(previousStepId, false)"  
+    />
     <base-button
       v-if="isNextStepButtonVisible"
       class="control app-text app-text--md"
