@@ -5,7 +5,6 @@
       :current-step="currentStep"
       :update-step="updateStep"
       :previous-step-id="previousStepId"
-      @content-part:updated="handleContetPartUpdate"
     />
   </div>
 </template>
@@ -59,9 +58,11 @@
     },
     mounted() {
       this.$root.$on('quiz:update-step', this.updateStep);
+      this.$root.$on('content-part:updated', this.handleContetPartUpdate);
     },
     beforeDestroy() {
       this.$root.$off('quiz:update-step', this.updateStep);
+      this.$root.$off('content-part:updated', this.handleContetPartUpdate);
     },
   };
 </script>

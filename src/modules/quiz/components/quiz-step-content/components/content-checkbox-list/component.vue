@@ -75,6 +75,7 @@
 </template>
 
 <script>
+  import emitContentPartUpdate from '@modules/quiz/mixins/emit-content-part-update';
   import BaseAccordion from '@shared/components/base/accordion';
   import BaseCheckbox from '@shared/components/base/checkbox';
   import BaseButton from '@shared/components/base/button';
@@ -86,12 +87,13 @@
       BaseCheckbox,
       BaseButton,
     },
+    mixins: [emitContentPartUpdate],
     watch: {
       checkedMain() {
-        this.emitUpdate({ main: this.main, additional: this.additional });
+        this.emitContentPartUpdate({ main: this.main, additional: this.additional });
       },
       checkedAdditional() {
-        this.emitUpdate({ main: this.main, additional: this.additional });
+        this.emitContentPartUpdate({ main: this.main, additional: this.additional });
       },
     },
     props: {
@@ -120,9 +122,6 @@
     methods: {
       getCheckedLabels(model, checkboxes) {
         return model.map((checked, index) => checked && checkboxes[index].label).filter(Boolean);
-      },
-      emitUpdate(payload) {
-        this.$emit('content-part:updated', payload);
       },
     },
   };

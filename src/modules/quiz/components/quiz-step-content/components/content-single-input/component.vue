@@ -10,12 +10,14 @@
 
 <script>
   import BaseInput from '@shared/components/base/input';
+  import emitContentPartUpdate from '@modules/quiz/mixins/emit-content-part-update';
 
   export default {
     name: 'single-input',
     components: {
       BaseInput,
     },
+    mixins: [emitContentPartUpdate],
     props: {
       content: {
         type: Object,
@@ -24,18 +26,13 @@
     },
     watch: {
       value(next) {
-        this.emitUpdate(next);
+        this.emitContentPartUpdate(next);
       },
     },
     data() {
       return {
         value: '',
       };
-    },
-    methods: {
-      emitUpdate(payload) {
-        this.$emit('content-part:updated', payload);
-      },
     },
   };
 </script>
