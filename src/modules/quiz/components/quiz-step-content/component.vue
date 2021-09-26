@@ -3,6 +3,7 @@
     :is="`content-${type}`"
     :content="data.content"
     :options="data.options"
+    @content-part:updated="handleContetPartUpdate"
   />
 </template>
 
@@ -40,6 +41,11 @@
       data: {
         type: Object,
         required: true,
+      },
+    },
+    methods: {
+      handleContetPartUpdate(payload) {
+        this.$emit('content-part:updated', payload);
       },
     },
   };

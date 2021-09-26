@@ -24,6 +24,7 @@
           :class="{ 'wrapper-white-content': isStepContentFilledType }"
           :type="currentStep.content.type"
           :data="currentStep.content.data.body"
+          @content-part:updated="handleContetPartUpdate"
         />
         <quiz-step-footer
           v-if="currentStep.content.data.footer"
@@ -75,6 +76,11 @@
       },
       isStepContentFilledType() {
         return STEP_CONTENT_FILLED_TYPES.includes(this.currentStep.content.type);
+      },
+    },
+    methods: {
+      handleContetPartUpdate(payload) {
+        this.$emit('content-part:updated', payload);
       },
     },
   };
