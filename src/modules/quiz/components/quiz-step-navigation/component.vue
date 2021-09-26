@@ -24,6 +24,19 @@
       <span>Пропустить</span>
       <img class="icon-skip" src="@images/icons/icon-arrow-small.svg" alt="" />
     </base-button>
+
+    <!-- Добавил кнопку "далее" идентичную по стилю кнопке "пропустить" -->
+    <base-button
+      v-if="navigation.further"
+      class="control app-text app-text--md"
+      kind="link"
+      size="smallest"
+      @click="() => updateStep(navigation.further)"
+    >
+      <span>Далее</span>
+      <img class="icon-skip" src="@images/icons/icon-arrow-small.svg" alt="" />
+    </base-button>
+
   </div>
 </template>
 

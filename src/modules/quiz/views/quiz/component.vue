@@ -5,6 +5,7 @@
       :current-step="currentStep"
       :update-step="updateStep"
       :previous-step-id="previousStepId"
+      @content-part:updated="handleContetPartUpdate"
     />
   </div>
 </template>
@@ -50,6 +51,10 @@
         const method = this.getUpdateHistoryMethodName(ahead);
         this.updateHistory(stepId, method);
         this.updateCurrentStep(stepId);
+      },
+      handleContetPartUpdate(payload) {
+        console.log(payload);
+        console.log(this.currentStep.content.data.heading.content.data.text.main);
       },
     },
     mounted() {

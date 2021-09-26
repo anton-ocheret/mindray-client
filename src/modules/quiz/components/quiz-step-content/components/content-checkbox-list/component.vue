@@ -9,8 +9,9 @@
       >
         <base-checkbox
           :id="`checkbox-list-item-${index}`"
+          v-model="checkedMain[index]"
           :label="checkbox.label"
-          @base-checkbox:toggle="(checked) => handleCheckboxClick(checkbox.next, checked)"
+          :checked="checkbox.checked"
         />
       </li>
     </ul>
@@ -62,7 +63,9 @@
           >
             <base-checkbox
               :id="`additional-options-content-${index}`"
+              v-model="checkedAdditional[index]"
               :label="checkbox.label"
+              :checked="checkbox.checked"
             />
           </li>
         </ul>
@@ -83,6 +86,14 @@
       BaseCheckbox,
       BaseButton,
     },
+    watch: {
+      checkedMain() {
+        this.emitUpdate({ main: this.main, additional: this.additional });
+      },
+      checkedAdditional() {
+        this.emitUpdate({ main: this.main, additional: this.additional });
+      },
+    },
     props: {
       content: {
         type: Object,
@@ -95,10 +106,23 @@
     },
     data: () => ({
       isAdditionalOptionsOpened: false,
+      checkedMain: [],
+      checkedAdditional: [],
     }),
+    computed: {
+      main() {
+        return this.getCheckedLabels(this.checkedMain, this.content.checkboxes);
+      },
+      additional() {
+        return this.getCheckedLabels(this.checkedAdditional, this.content.additional);
+      },
+    },
     methods: {
-      handleCheckboxClick(nextStepId, checked) {
-        this.$root.$emit('quiz:update-preliminary-step-id', checked && nextStepId);
+      getCheckedLabels(model, checkboxes) {
+        return model.map((checked, index) => checked && checkboxes[index].label).filter(Boolean);
+      },
+      emitUpdate(payload) {
+        this.$emit('content-part:updated', payload);
       },
     },
   };

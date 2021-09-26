@@ -7,7 +7,7 @@
         v-bind="$attrs"
         :checked="checked"
         :disabled="disabled"
-        @change="onChange"
+        @change="$emit('change', $event.target.checked)"
       />
 
       <label
@@ -23,6 +23,10 @@
 export default {
   name: 'base-checkbox',
   inheritAttrs: false,
+  model: {
+    prop: 'checked',
+    event: 'change',
+  },
   props: {
     id: {
       type: [Number, String],
@@ -41,12 +45,6 @@ export default {
 
     disabled: {
       type: Boolean,
-    },
-  },
-
-  methods: {
-    onChange(event) {
-      this.$emit('base-checkbox:toggle', event.target.checked);
     },
   },
 };

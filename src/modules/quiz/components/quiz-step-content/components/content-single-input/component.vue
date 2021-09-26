@@ -2,6 +2,7 @@
   <div class="single-input">
     <base-input
       class="app-text app-text--lg"
+      v-model="value"
       :placeholder="content.placeholder"
     />
   </div>
@@ -19,6 +20,21 @@
       content: {
         type: Object,
         required: true,
+      },
+    },
+    watch: {
+      value(next) {
+        this.emitUpdate(next);
+      },
+    },
+    data() {
+      return {
+        value: '',
+      };
+    },
+    methods: {
+      emitUpdate(payload) {
+        this.$emit('content-part:updated', payload);
       },
     },
   };
