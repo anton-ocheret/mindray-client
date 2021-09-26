@@ -13,6 +13,8 @@
 </template>
 
 <script>
+  import emitContentPartUpdate from '@modules/quiz/mixins/emit-content-part-update';
+
   import BaseAutocomplete from '@shared/components/base/autocomplete';
 
   export default {
@@ -20,10 +22,16 @@
     components: {
       BaseAutocomplete,
     },
+    mixins: [emitContentPartUpdate],
     props: {
       content: {
         type: Object,
         required: true,
+      },
+    },
+    watch: {
+      value(next) {
+        this.emitContentPartUpdate(next);
       },
     },
     data: () => ({

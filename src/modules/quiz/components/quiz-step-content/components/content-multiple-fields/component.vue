@@ -1,12 +1,13 @@
 <template>
   <div class="multiple-fields">
     <div
-      v-for="(field, index) in content"
+      v-for="(field, index) in localContent"
       class="multiple-fields-item"
       :key="index"
     >
       <component
         :is="`base-${field.type}`"
+        v-model="localContent[index].value"
         class="app-text app-text--lg"
         v-bind="field.data"
       />
@@ -15,6 +16,8 @@
 </template>
 
 <script>
+  import emitContentPartUpdate from '@modules/quiz/mixins/emit-content-part-update';
+
   import BaseAutocomplete from '@shared/components/base/autocomplete';
   import BaseTextarea from '@shared/components/base/textarea';
   import BaseButton from '@shared/components/base/button';
@@ -30,11 +33,35 @@
       BaseSelect,
       BaseInput,
     },
+    mixins: [emitContentPartUpdate],
     props: {
       content: {
         type: Array,
         required: true,
       },
+    },
+    watch: {
+      localContent: {
+        deep: true,
+        handler(next, prev) {
+          if (prev.length && next.length) {
+            this.emitContentPartUpdate(
+              next.map((field) => ({
+                label: field.data.placeholder,
+                value: field.value,
+              })),
+            );
+          }
+        },
+      },
+    },
+    data() {
+      return {
+        localContent: [],
+      };
+    },
+    mounted() {
+      this.localContent = [...this.content.map((field) => ({ ...field, value: null }))];
     },
   };
 </script>
