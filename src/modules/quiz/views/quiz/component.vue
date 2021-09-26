@@ -52,8 +52,11 @@
         this.updateCurrentStep(stepId);
       },
       handleContetPartUpdate(payload) {
-        console.log(payload);
-        console.log(this.currentStep.content.data.heading.content.data.text.main);
+        this.quizUpdateModel({
+          id: this.currentStep.id,
+          heading: this.currentStep.content.data.heading.content.data.text.main,
+          payload,
+        });
       },
     },
     mounted() {
