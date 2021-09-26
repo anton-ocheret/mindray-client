@@ -4,7 +4,10 @@
       class="button app-text app-text--lg"
       v-for="(button, index) in content.buttons"
       :key="`button${index}`"
-      @click="$root.$emit('quiz:update-step', button.navigation.next)"
+      @click="
+        emitContentPartUpdate(button.data.content.text);
+        $nextTick(() => $root.$emit('quiz:update-step', button.navigation.next));
+      "
     >
       {{ button.data.content.text }}
       <buttons-list-hint
@@ -25,6 +28,7 @@
 </template>
 
 <script>
+  import emitContentPartUpdate from '@modules/quiz/mixins/emit-content-part-update';
   import ButtonsListHint from '@modules/quiz/components/quiz-step-content/components/content-buttons-list/components/buttons-list-hint';
   import BaseButton from '@shared/components/base/button';
   import BaseInput from '@shared/components/base/input';
@@ -36,6 +40,7 @@
       BaseButton,
       BaseInput,
     },
+    mixins: [emitContentPartUpdate],
     props: {
       content: {
         type: Object,
