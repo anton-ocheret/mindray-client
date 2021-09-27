@@ -7,3 +7,7 @@ export const mutations = {
   UPDATE_FOOTER_KIND: 'UPDATE_FOOTER_KIND',
   QUIZ_UPDATE_MODEL: 'QUIZ_UPDATE_MODEL',
 };
+
+export const actions = {
+  QUIZ_SEND_RESULT: 'QUIZ_SEND_RESULT', 
+};

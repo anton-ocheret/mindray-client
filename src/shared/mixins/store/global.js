@@ -1,7 +1,7 @@
 import { createNamespacedHelpers } from 'vuex';
-import { mutations } from '@shared/store/constants';
+import { mutations, actions } from '@shared/store/constants';
 
-const { mapMutations, mapState } = createNamespacedHelpers('global');
+const { mapMutations, mapState, mapActions } = createNamespacedHelpers('global');
 
 export default {
   computed: {
@@ -14,6 +14,9 @@ export default {
     ...mapMutations({
       updateFooterKind: mutations.UPDATE_FOOTER_KIND,
       quizUpdateModel: mutations.QUIZ_UPDATE_MODEL,
+    }),
+    ...mapActions({
+      quizSendResults: actions.QUIZ_SEND_RESULT,
     }),
   },
 };

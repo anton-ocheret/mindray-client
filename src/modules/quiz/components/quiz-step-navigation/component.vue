@@ -2,7 +2,7 @@
   <div class="navigation">
     <quiz-step-back
       v-if="previousStepId"
-      :step-back-handler="() => updateStep(previousStepId, false)"
+      :step-back-handler="handleStepPrev"
     />
     <base-button
       v-if="isNextStepButtonVisible"
@@ -19,7 +19,7 @@
       class="control app-text app-text--md"
       kind="link"
       size="smallest"
-      @click="() => updateStep(navigation.skip)"
+      @click="handleStepSkip"
     >
       <span>Пропустить</span>
       <img class="icon-skip" src="@images/icons/icon-arrow-small.svg" alt="" />
@@ -31,7 +31,7 @@
       class="control app-text app-text--md"
       kind="link"
       size="smallest"
-      @click="() => updateStep(navigation.further)"
+      @click="handleStepFurther"
     >
       <span>Далее</span>
       <img class="icon-skip" src="@images/icons/icon-arrow-small.svg" alt="" />
@@ -41,6 +41,8 @@
 </template>
 
 <script>
+  import emitContentPartUpdate from '@modules/quiz/mixins/emit-content-part-update';
+
   import BaseButton from '@shared/components/base/button';
   import QuizStepBack from '@modules/quiz/components/quiz-step-back';
 
@@ -50,6 +52,7 @@
       BaseButton,
       QuizStepBack,
     },
+    mixins: [emitContentPartUpdate],
     props: {
       previousStepId: {
         type: String,
@@ -81,6 +84,15 @@
       handleStepNext() {
         this.updateStep(this.preliminaryNextStepId || this.navigation.next);
         this.updatePreliminaryNextStepId(null);
+      },
+      handleStepPrev() {
+        this.updateStep(this.previousStepId, false);
+      },
+      handleStepSkip() {
+        this.updateStep(this.navigation.skip);
+      },
+      handleStepFurther() {
+        this.updateStep(this.navigation.further);
       },
     },
      mounted() {

@@ -1,4 +1,4 @@
-import { mutations, FOOTER_KIND_SMALL, FOOTER_KIND_DEFAULT } from '@shared/store/constants';
+import { mutations, actions, FOOTER_KIND_SMALL, FOOTER_KIND_DEFAULT } from '@shared/store/constants';
 
 export default {
   namespaced: true,
@@ -17,8 +17,20 @@ export default {
       if (nextIndex > 0) state.footer.kind = FOOTER_KIND_SMALL;
     },
     [mutations.QUIZ_UPDATE_MODEL](state, payload) {
-      // console.log(payload);
       state.quiz.model[payload.id] = payload;
+    },
+  },
+  actions: {
+    [actions.QUIZ_SEND_RESULT]: ({ state }, { history }) => {
+      console.log(history.map((stepId) => (
+        state.quiz.model[stepId] ? ({
+          ...state.quiz.model[stepId],
+        }) : ({
+          id: stepId,
+          payload: null,
+        })
+      )));
+      console.log('send result');
     },
   },
 };

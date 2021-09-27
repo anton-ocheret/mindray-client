@@ -22,6 +22,8 @@
     watch: {
       currentStepIndex(nextIndex, prevIndex) {
         this.updateFooterKind({ nextIndex, prevIndex });
+        this.handleContetPartUpdate(null);
+        this.handleResultsSend();
       },
     },
     data: () => ({
@@ -57,6 +59,9 @@
           heading: this.currentStep.content.data.heading.content.data.text.main,
           payload,
         });
+      },
+      handleResultsSend() {
+        this.quizSendResults({ history: this.quiz.navigation.history });
       },
     },
     mounted() {
