@@ -23,7 +23,6 @@
       currentStepIndex(nextIndex, prevIndex) {
         this.updateFooterKind({ nextIndex, prevIndex });
         this.handleContetPartUpdate(null);
-        this.handleResultsSend();
       },
     },
     data: () => ({
@@ -61,16 +60,19 @@
         });
       },
       handleResultsSend() {
+        this.quiz.navigation.history = this.quiz.navigation.history.slice(0, 1);
         this.quizSendResults({ history: this.quiz.navigation.history });
       },
     },
     mounted() {
       this.$root.$on('quiz:update-step', this.updateStep);
       this.$root.$on('content-part:updated', this.handleContetPartUpdate);
+      this.$root.$on('quiz:send-data', this.handleResultsSend);
     },
     beforeDestroy() {
       this.$root.$off('quiz:update-step', this.updateStep);
       this.$root.$off('content-part:updated', this.handleContetPartUpdate);
+      this.$root.$off('quiz:send-data', this.handleResultsSend);
     },
   };
 </script>

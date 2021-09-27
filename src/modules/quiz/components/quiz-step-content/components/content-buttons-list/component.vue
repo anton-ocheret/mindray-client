@@ -4,10 +4,7 @@
       class="button app-text app-text--lg"
       v-for="(button, index) in content.buttons"
       :key="`button${index}`"
-      @click="
-        emitContentPartUpdate(button.data.content.text);
-        $nextTick(() => $root.$emit('quiz:update-step', button.navigation.next));
-      "
+      @click="() => handleClick(button)"
     >
       {{ button.data.content.text }}
       <buttons-list-hint
@@ -15,6 +12,7 @@
         :content="button.data.hint.content"
       />
     </base-button>
+
     <template v-if="content.inputs && content.inputs.length">
       <base-input
         v-for="(input, index) in content.inputs"
@@ -45,6 +43,17 @@
       content: {
         type: Object,
         required: true,
+      },
+    },
+    methods: {
+      handleClick(button) {
+        this.emitContentPartUpdate(button.data.content.text);
+        this.$nextTick(() => this.$root.$emit('quiz:update-step', button.navigation.next));
+        this.$nextTick(() => {
+          if (button.data.content.sendData) {
+            this.$root.$emit('quiz:send-data');
+          }
+        });
       },
     },
   };

@@ -152,6 +152,7 @@ export default {
                   },
                   data: {
                     content: {
+                      sendData: true,
                       text: 'Да',
                     },
                   },
@@ -163,6 +164,7 @@ export default {
                   },
                   data: {
                     content: {
+                      sendData: true,
                       text: 'Нет',
                     },
                   },

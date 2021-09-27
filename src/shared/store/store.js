@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { mutations, actions, FOOTER_KIND_SMALL, FOOTER_KIND_DEFAULT } from '@shared/store/constants';
 
 export default {
@@ -22,15 +23,18 @@ export default {
   },
   actions: {
     [actions.QUIZ_SEND_RESULT]: ({ state }, { history }) => {
-      console.log(history.map((stepId) => (
+      const data = history.map((stepId) => (
         state.quiz.model[stepId] ? ({
           ...state.quiz.model[stepId],
         }) : ({
           id: stepId,
           payload: null,
         })
-      )));
-      console.log('send result');
+      ));
+
+      axios.post('https://service.medford.pro/quiz-amocrm.php', { data })
+        .then((res) => console.dir(res.data))
+        .catch((error) => console.dir(error));
     },
   },
 };
