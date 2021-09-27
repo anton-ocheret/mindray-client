@@ -60,8 +60,8 @@
         });
       },
       handleResultsSend() {
-        this.quiz.navigation.history = this.quiz.navigation.history.slice(0, 1);
-        this.quizSendResults({ history: this.quiz.navigation.history });
+        this.quizSendResults({ history: this.quiz.navigation.history })
+          .finally(() => this.quiz.navigation.history = this.quiz.navigation.history.slice(0, 1));
       },
     },
     mounted() {
