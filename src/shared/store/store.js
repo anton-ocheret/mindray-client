@@ -33,7 +33,7 @@ export default {
       ));
 
       return new Promise((resolve, reject) => {
-        axios.post('https://service.medford.pro/quiz-amocrm.php', { data })
+        axios.post('https://service.medford.pro/quiz-amocrm.php/', { data })
           .then((res) => console.dir(res.data), resolve())
           .catch((error) => console.dir(error), reject());
       });
