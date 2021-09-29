@@ -4,7 +4,6 @@ export default {
       history: ['44'],
   },
   data: {
-
     // "Оставьте Ваши данные, что бы мы могли связаться с Вами" (multiple-fields) frame 57
     // Теперь остальные ветки после основного опроса должны переходить сюда 
     '15': {
@@ -27,18 +26,21 @@ export default {
                 type: 'input',
                 data: {
                   placeholder: 'Имя',
+                  validations: ['required'],
                 },
               },
               {
                 type: 'input',
                 data: {
                   placeholder: 'Телефон',
+                  validations: ['required'],
                 },
               },
               {
                 type: 'input',
                 data: {
                   placeholder: 'E-mail',
+                  validations: ['required', 'email'],
                 },
               },
             ],
@@ -81,7 +83,7 @@ export default {
     '19': {
       id: '19',
       content: {
-        type: 'single-autocomplete-multiple',
+        type: 'single-input',
         data: {
           heading: {
             content: {
@@ -104,108 +106,16 @@ export default {
           body: {
             content: {
               placeholder: 'Введите серийный номер',
-              options: [
-                { name: 'Option 1' },
-                { name: 'Option 2' },
-                { name: 'Option 3' },
-                { name: 'Option 4' },
-                { name: 'Option 5' },
-                { name: 'Option 6' },
-                { name: 'Option 7' },
-                { name: 'Option 8' },
-                { name: 'Option 9' },
-                { name: 'Option 10' },
-                { name: 'Option 11' },
-                { name: 'Option 12' },
-              ],
             },
           },
         },
       },
       // "Далее" переход к блоку "Ваша заявка №43456 передана в отдел, ожидайте звонка от специалиста"
       navigation: {
+        last: true,
         next: '20',
       },
     },
-    // Ваша заявка №43456 передана в отдел, ожидайте звонка от специалиста (buttons-list)
-    '20': {
-      id: '20',
-      content: {
-        type: 'buttons-list',
-        data: {
-          heading: {
-            content: {
-              data: {
-                text: {
-                  main: 'Ваша заявка №43456 передана в отдел, ожидайте звонка от специалиста',
-                  sub: 'Я могу быть еще чем-то полезен?',
-                },
-              },
-            },
-          },
-          body: {
-            content: {
-              buttons: [
-                {
-                  navigation: {
-                    next: '44',
-                  },
-                  data: {
-                    content: {
-                      sendData: true,
-                      text: 'Да',
-                    },
-                  },
-                },
-                // Кнопка "Нет" перебросит на последний блок "Спасибо! До свидания"
-                {
-                  navigation: {
-                    next: '21',
-                  },
-                  data: {
-                    content: {
-                      sendData: true,
-                      text: 'Нет',
-                    },
-                  },
-                },
-              ],
-            },
-          },
-        },
-      },
-      navigation: {},
-    },
-    // "Спасибо! До свидания"
-    '21': {
-      id: '21',
-      content: {
-        type: 'buttons-list',
-        data: {
-          heading: {
-            content: {
-              data: {
-                text: {
-                  main: 'Спасибо! До свидания',
-                },
-              },
-            },
-          },
-          body: {
-            content: {
-              buttons: [],
-            },
-          },
-        },
-      },
-      // Переход на страницу "Сервиса"
-      navigation: {
-        skip: '44',
-      },
-    },
-
-    // Если нажали на кнопку "Отдел сервиса"
-    // "Выберите интересущий Вас пункт" фрейм 41 (buttons-list)
     '44': {
       id: '44',
       content: {

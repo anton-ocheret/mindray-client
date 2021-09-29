@@ -1,6 +1,7 @@
 <template>
   <textarea
     class="base-textarea"
+    :class="[{ error }]"
     :value="value"
     v-bind="$attrs"
     @input="updateValue"
@@ -12,6 +13,10 @@
     name: 'base-textarea',
     props: {
       value: [String, Number],
+      error: {
+        type: Object,
+        default: null,
+      },
     },
     methods: {
       updateValue(event) {
@@ -41,6 +46,10 @@
     &:focus {
       outline: none;
       box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, .25);
+    }
+
+    &.error {
+      box-shadow: 0 0 0 2px red;
     }
   }
 </style>

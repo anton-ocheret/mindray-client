@@ -1,22 +1,33 @@
 <template>
-  <input
-    type="text"
-    class="base-input"
-    :class="[size]"
-    :value="value"
-    v-bind="$attrs"
-    @input="updateValue"
-  />
+  <div class="text-left relative">
+    <input
+      type="text"
+      class="base-input"
+      :class="[size, { error }, $vnode.data.staticClass]"
+      :value="value"
+      v-bind="$attrs"
+      @input="updateValue"
+    />
+    <span
+      v-if="error"
+      class="error-message app-text app-text--sm"
+    >{{ error.message }}</span>
+  </div>
 </template>
 
 <script>
   export default {
     name: 'base-input',
+    inheritAttrs: false,
     props: {
       value: [String, Number],
       size: {
         type: String,
         default: 'medium',
+      },
+      error: {
+        type: Object,
+        default: null,
       },
     },
     methods: {
@@ -41,6 +52,10 @@
       box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, .25);
     }
 
+    &.error {
+      box-shadow: 0 0 0 2px red;
+    }
+
     &.medium {
       padding: 14px 20px;
 
@@ -56,5 +71,13 @@
         padding: 17px 40px;
       }
     }
+  }
+
+  .error-message {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(calc(100% + 4px));
+    color: red;
   }
 </style>

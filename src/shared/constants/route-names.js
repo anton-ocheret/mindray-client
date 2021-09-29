@@ -1,3 +1,5 @@
 export default {
   QUIZ: 'QUIZ',
+  QUIZ_AUTOREPLY: 'QUIZ_AUTOREPLY', 
+  QUIZ_STEP_LAST: 'QUIZ_STEP_LAST',
 };

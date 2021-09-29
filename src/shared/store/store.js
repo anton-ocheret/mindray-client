@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { format } from 'date-fns';
+import ru from 'date-fns/locale/ru';
 import { mutations, actions, FOOTER_KIND_SMALL, FOOTER_KIND_DEFAULT } from '@shared/store/constants';
-
 export default {
   namespaced: true,
   state: () => ({
@@ -8,7 +9,9 @@ export default {
       kind: FOOTER_KIND_DEFAULT,
     },
     quiz: {
+      history: [],
       model: {},
+      isStepValid: true,
     },
   }),
   mutations: {
@@ -20,10 +23,17 @@ export default {
     [mutations.QUIZ_UPDATE_MODEL](state, payload) {
       state.quiz.model[payload.id] = payload;
     },
+    [mutations.QUIZ_UPDATE_HISTORY](state, payload) {
+      state.quiz.history = [...payload];
+    },
+    [mutations.QUIZ_TOOGLE_STEP_VALIDITY](state, payload) {
+      state.quiz.isStepValid = payload;
+    },
   },
   actions: {
-    [actions.QUIZ_SEND_RESULT]: ({ state }, { history }) => {
-      const data = history.map((stepId) => (
+    [actions.QUIZ_SEND_RESULT]: ({ state }, { applicationNumber }) => {
+      const date = format(new Date(), 'MM MMMM yyyy года в HH:mm', { locale: ru });
+      const answers = state.quiz.history.map((stepId) => (
         state.quiz.model[stepId] ? ({
           ...state.quiz.model[stepId],
         }) : ({
@@ -33,7 +43,7 @@ export default {
       ));
 
       return new Promise((resolve, reject) => {
-        axios.post('/quiz-amocrm.php', { data })
+        axios.post('/quiz-amocrm.php', { data: { applicationNumber, date, answers } })
           .then((res) => console.dir(res.data), resolve())
           .catch((error) => console.dir(error), reject());
       });

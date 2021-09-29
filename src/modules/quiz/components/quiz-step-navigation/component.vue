@@ -7,9 +7,10 @@
     <base-button
       v-if="isNextStepButtonVisible"
       class="control app-text app-text--md"
+      :class="{ disabled: !isStepValid }"
       kind="bordered"
       size="small"
-      @click="handleStepNext"
+      @click="handleStepNextClick"
     >
       Далее
     </base-button>
@@ -29,6 +30,7 @@
     <base-button
       v-if="navigation.further"
       class="control app-text app-text--md"
+      :class="{ disabled: !isStepValid }"
       kind="link"
       size="smallest"
       @click="handleStepFurther"
@@ -45,6 +47,8 @@
 
   import BaseButton from '@shared/components/base/button';
   import QuizStepBack from '@modules/quiz/components/quiz-step-back';
+
+  import { ROUTE_NAMES } from '@shared/constants';
 
   export default {
     name: 'step-navigation',
@@ -66,6 +70,14 @@
         type: Function,
         required: true,
       },
+      isStepValid: {
+        type: Boolean,
+        default: true,
+      },
+      isStepWithValidation: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -81,7 +93,15 @@
       updatePreliminaryNextStepId(nextStepId) {
         this.preliminaryNextStepId = nextStepId;
       },
+      handleStepNextClick() {
+        if (this.isStepWithValidation) {
+          this.$root.$emit('quiz:validate-step', this.handleStepNext.bind(this));
+        } else {
+          this.handleStepNext();
+        }
+      },
       handleStepNext() {
+        if (this.navigation.last) return this.$router.push({ name: ROUTE_NAMES.QUIZ_STEP_LAST });
         this.updateStep(this.preliminaryNextStepId || this.navigation.next);
         this.updatePreliminaryNextStepId(null);
       },
@@ -95,7 +115,7 @@
         this.updateStep(this.navigation.further);
       },
     },
-     mounted() {
+    mounted() {
       this.$root.$on('quiz:update-preliminary-step-id', this.updatePreliminaryNextStepId);
     },
     beforeDestroy() {
@@ -112,13 +132,15 @@
     margin-top: 20px;
     min-height: 44px;
   }
-
   .control {
     margin: 10px;
   }
-
   .icon-skip {
     margin-left: 7px;
     height: 13px;
+  }
+  .disabled {
+    opacity: .4;
+    pointer-events: none;
   }
 </style>

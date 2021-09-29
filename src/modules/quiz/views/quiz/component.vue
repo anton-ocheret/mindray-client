@@ -5,15 +5,19 @@
       :current-step="currentStep"
       :update-step="updateStep"
       :previous-step-id="previousStepId"
+      :is-step-valid="isStepValid"
+      :is-step-with-validation="isStepWithValidation"
     />
   </div>
 </template>
 
 <script>
-  import QuizStep from '@modules/quiz/components/quiz-step';
-
+  import { clone } from 'ramda';
+  import { ROUTE_NAMES } from '@shared/constants';
   import { global } from '@shared/mixins/store';
-  import { quiz } from '@modules/quiz';
+  import { quiz as initialQuiz } from '@modules/quiz';
+
+  import QuizStep from '@modules/quiz/components/quiz-step';
   
   export default {
     name: 'Quiz',
@@ -23,20 +27,24 @@
       currentStepIndex(nextIndex, prevIndex) {
         this.updateFooterKind({ nextIndex, prevIndex });
         this.handleContetPartUpdate(null);
+        this.quizUpdateHistory(this.quiz.navigation.history);
       },
     },
     data: () => ({
-      quiz,
+      quiz: clone(initialQuiz),
     }),
     computed: {
       currentStep() {
-        return this.quiz.data[quiz.navigation.current];
+        return this.quiz.data[this.quiz.navigation.current];
       },
       currentStepIndex() {
         return this.quiz.navigation.history.lastIndexOf(this.quiz.navigation.current);
       },
       previousStepId() {
         return this.quiz.navigation.history[this.currentStepIndex - 1];
+      },
+      isStepWithValidation() {
+        return JSON.stringify(this.currentStep).includes('validations');
       },
     },
     methods: {
@@ -52,6 +60,9 @@
         this.updateHistory(stepId, method);
         this.updateCurrentStep(stepId);
       },
+      resetQuiz() {
+        this.quiz = clone(initialQuiz);
+      },
       handleContetPartUpdate(payload) {
         this.quizUpdateModel({
           id: this.currentStep.id,
@@ -59,20 +70,22 @@
           payload,
         });
       },
-      handleResultsSend() {
-        this.quizSendResults({ history: this.quiz.navigation.history })
-          .finally(() => this.quiz.navigation.history = this.quiz.navigation.history.slice(0, 1));
-      },
     },
     mounted() {
       this.$root.$on('quiz:update-step', this.updateStep);
       this.$root.$on('content-part:updated', this.handleContetPartUpdate);
-      this.$root.$on('quiz:send-data', this.handleResultsSend);
+      this.quizUpdateHistory(this.quiz.navigation.history);
     },
     beforeDestroy() {
       this.$root.$off('quiz:update-step', this.updateStep);
       this.$root.$off('content-part:updated', this.handleContetPartUpdate);
-      this.$root.$off('quiz:send-data', this.handleResultsSend);
+    },
+    beforeRouteEnter(_, from, next) {
+      next((vm) => {
+        if (from.name === ROUTE_NAMES.QUIZ_STEP_LAST) {
+          vm.resetQuiz();
+        }
+      });
     },
   };
 </script>

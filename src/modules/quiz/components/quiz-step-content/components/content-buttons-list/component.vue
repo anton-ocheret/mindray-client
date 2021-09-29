@@ -49,11 +49,6 @@
       handleClick(button) {
         this.emitContentPartUpdate(button.data.content.text);
         this.$nextTick(() => this.$root.$emit('quiz:update-step', button.navigation.next));
-        this.$nextTick(() => {
-          if (button.data.content.sendData) {
-            this.$root.$emit('quiz:send-data');
-          }
-        });
       },
     },
   };

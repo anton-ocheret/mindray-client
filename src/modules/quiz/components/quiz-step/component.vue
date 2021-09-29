@@ -35,6 +35,8 @@
         :previous-step-id="previousStepId"
         :navigation="currentStep.navigation"
         :update-step="updateStep"
+        :is-step-valid="isStepValid"
+        :is-step-with-validation="isStepWithValidation"
       />
     </div>
   </div>
@@ -67,6 +69,14 @@
       previousStepId: {
         type: String,
         default: null,
+      },
+      isStepValid: {
+        type: Boolean,
+        default: true,
+      },
+      isStepWithValidation: {
+        type: Boolean,
+        default: false,
       },
     },
     computed: {

@@ -1,22 +1,29 @@
 <template>
   <div class="multiple-fields">
     <div
-      v-for="(field, index) in localContent"
+      v-for="(fieldValue, fieldKey) in fields"
       class="multiple-fields-item"
-      :key="index"
+      :key="fieldKey"
     >
       <component
-        :is="`base-${field.type}`"
-        v-model="localContent[index].value"
+        :is="`base-${fieldValue.type}`"
+        :error="getError(fieldKey)"
+        v-model="fieldValue.value"
         class="app-text app-text--lg"
-        v-bind="field.data"
+        v-bind="fieldValue.data"
+        @input="() => handleInput(fieldKey)"
       />
     </div>
   </div>  
 </template>
 
 <script>
+  import { validationMixin } from 'vuelidate';
+  import { global } from '@shared/mixins/store';
+
   import emitContentPartUpdate from '@modules/quiz/mixins/emit-content-part-update';
+
+  import { VALIDATIONS } from '@shared/constants';
 
   import BaseAutocomplete from '@shared/components/base/autocomplete';
   import BaseTextarea from '@shared/components/base/textarea';
@@ -27,13 +34,34 @@
   export default {
     name: 'multiple-fields',
     components: {
-      BaseAutocomplete,
-      BaseTextarea,
-      BaseButton,
-      BaseSelect,
-      BaseInput,
+        BaseAutocomplete,
+        BaseTextarea,
+        BaseButton,
+        BaseSelect,
+        BaseInput,
     },
-    mixins: [emitContentPartUpdate],
+    mixins: [emitContentPartUpdate, validationMixin, global],
+    validations() {
+      return {
+        fields: {
+          ...this.content.reduce(
+            (result, item, index) => item.data.validations ? ({
+              ...result,
+              [`${item.type}${index}`]: {
+                value: item.data.validations.reduce(
+                  (result, item) => ({
+                    ...result,
+                    [VALIDATIONS[item].name]: VALIDATIONS[item].handler,
+                  }),
+                  {},
+                ),
+              },
+            }) : { ...result },
+            {},
+          ),
+        },
+      };
+    },
     props: {
       content: {
         type: Array,
@@ -41,27 +69,69 @@
       },
     },
     watch: {
-      localContent: {
+      fields: {
         deep: true,
-        handler(next, prev) {
-          if (prev.length && next.length) {
-            this.emitContentPartUpdate(
-              next.map((field) => ({
-                label: field.data.placeholder,
-                value: field.value,
-              })),
-            );
+        handler(next) {
+          const content = Object.entries(next).map(([,data]) => data);
+          return content.length && this.emitContentPartUpdate(
+             content.map((field) => ({
+              label: field.data.placeholder,
+              value: field.value,
+            })),
+          );
+        },
+      },
+      $v: {
+        deep: true,
+        handler(next) {
+          if (next && next.$anyDirty) {
+            this.quizToggleStepValidity(!next.$invalid);
           }
         },
       },
     },
     data() {
       return {
-        localContent: [],
+        fields: {},
       };
     },
+    methods: {
+      getError(fieldKey) {
+        const shoulValidate = this.$v.fields && this.$v.fields[fieldKey] && this.$v.fields[fieldKey].$dirty;
+        const invalidValidationKey = shoulValidate ? this.$v.fields[fieldKey].$model.data.validations.find((validation) => this.$v.fields[fieldKey].value[validation] === false) : undefined;
+
+        return invalidValidationKey ? ({
+          error: true,
+          message: VALIDATIONS[invalidValidationKey].message,
+        }) : undefined;
+      },
+      handleInput(fieldKey) {
+        if (this.$v.fields && this.$v.fields[fieldKey]) {
+          this.$v.fields[fieldKey].$touch();
+        }
+      },
+      handleValidation(callback) {
+        this.$v.$touch();
+        console.log(this.$v, this.$v.$anyDirty && !this.$v.$invalid);
+        if (this.$v.$anyDirty && !this.$v.$invalid) {
+          console.log('handler');
+          callback();
+        }
+      },
+    },
     mounted() {
-      this.localContent = [...this.content.map((field) => ({ ...field, value: null }))];
+      this.content.forEach((field, index) => {
+        this.$set(this.fields, `${field.type}${index}`, {
+          ...field,
+          value: null,
+        });
+      });
+
+      this.$root.$on('quiz:validate-step', this.handleValidation);
+    },
+    beforeDestroy() {
+      this.$root.$off('quiz:validate-step', this.handleValidation);
+      this.quizToggleStepValidity(true);
     },
   };
 </script>
@@ -75,11 +145,7 @@
   }
 
   .multiple-fields-item {
-    margin-bottom: 15px;
-
-    @media(min-width: $md) {
-      margin-bottom: 25px;
-    }
+    margin-bottom: 25px;
 
     &:last-of-type {
       margin: 0;
