@@ -112,9 +112,7 @@
       },
       handleValidation(callback) {
         this.$v.$touch();
-        console.log(this.$v, this.$v.$anyDirty && !this.$v.$invalid);
-        if (this.$v.$anyDirty && !this.$v.$invalid) {
-          console.log('handler');
+        if (!this.$v.$invalid) {
           callback();
         }
       },
