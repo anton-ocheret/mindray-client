@@ -55,6 +55,7 @@
                     type: step.heading.hint.kind,
                     data: {
                       text: [step.heading.hint.data.text],
+                      img: step.heading.hint.data.image,
                     },
                   },
                 };
