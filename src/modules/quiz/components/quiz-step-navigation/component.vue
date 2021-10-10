@@ -101,7 +101,7 @@
         }
       },
       handleStepNext() {
-        if (this.navigation.last) return this.$router.push({ name: ROUTE_NAMES.QUIZ_STEP_LAST });
+        if (this.navigation.last) return this.$router.push({ name: ROUTE_NAMES.QUIZ_STEP_LAST, params: { url: this.$route.params.url } });
         this.updateStep(this.preliminaryNextStepId || this.navigation.next);
         this.updatePreliminaryNextStepId(null);
       },

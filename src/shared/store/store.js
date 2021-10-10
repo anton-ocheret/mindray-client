@@ -5,6 +5,7 @@ import { mutations, actions, FOOTER_KIND_SMALL, FOOTER_KIND_DEFAULT } from '@sha
 export default {
   namespaced: true,
   state: () => ({
+    quizId: null,
     footer: {
       kind: FOOTER_KIND_DEFAULT,
     },
@@ -23,6 +24,9 @@ export default {
     [mutations.QUIZ_UPDATE_MODEL](state, payload) {
       state.quiz.model[payload.id] = payload;
     },
+    [mutations.SET_QUIZ_ID](state, payload) {
+      state.quizId = payload;
+    },
     [mutations.QUIZ_UPDATE_HISTORY](state, payload) {
       state.quiz.history = [...payload];
     },
@@ -31,7 +35,7 @@ export default {
     },
   },
   actions: {
-    [actions.QUIZ_SEND_RESULT]: ({ state }, { applicationNumber }) => {
+    [actions.QUIZ_SEND_RESULT]: ({ state }, { applicationNumber, quizId }) => {
       const date = format(new Date(), 'MM MMMM yyyy года в HH:mm', { locale: ru });
       const answers = state.quiz.history.map((stepId) => (
         state.quiz.model[stepId] ? ({
@@ -43,7 +47,7 @@ export default {
       ));
 
       return new Promise((resolve, reject) => {
-        axios.post('/quiz-amocrm.php', { data: { applicationNumber, date, answers } })
+        axios.post('/results', { data: { applicationNumber, date, answers, quizId } })
           .then((res) => console.dir(res.data), resolve())
           .catch((error) => console.dir(error), reject());
       });

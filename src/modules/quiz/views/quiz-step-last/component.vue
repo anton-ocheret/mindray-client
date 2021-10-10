@@ -54,7 +54,7 @@
       },
     },
     mounted() {
-      this.quizSendResults({ applicationNumber: getApplicationNumber() });
+      this.quizSendResults({ applicationNumber: getApplicationNumber(), quizId: this.quizId });
     },
     beforeRouteEnter(_, from, next) {
       next(!from.name ? { name: ROUTE_NAMES.QUIZ } : undefined);

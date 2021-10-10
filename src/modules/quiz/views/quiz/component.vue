@@ -1,105 +1,133 @@
 <template>
-  <div class="quiz">
-    <quiz-step
-      :key="currentStep.id"
-      :current-step="currentStep"
-      :update-step="updateStep"
-      :previous-step-id="previousStepId"
-      :is-step-valid="isStepValid"
-      :is-step-with-validation="isStepWithValidation"
-    />
-  </div>
+  <quiz v-if="quiz" :quiz="quiz" />
 </template>
 
 <script>
-  import { clone } from 'ramda';
-  import { ROUTE_NAMES } from '@shared/constants';
+  import axios from 'axios';
+  import Quiz from './component-2.vue';
   import { global } from '@shared/mixins/store';
-  import { quiz as initialQuiz } from '@modules/quiz';
 
-  import QuizStep from '@modules/quiz/components/quiz-step';
-  
   export default {
-    name: 'Quiz',
-    components: { QuizStep },
+    name: 'QuizWrap',
+    components: { Quiz },
     mixins: [global],
-    watch: {
-      currentStepIndex(nextIndex, prevIndex) {
-        this.updateFooterKind({ nextIndex, prevIndex });
-        this.handleContetPartUpdate(null);
-        this.quizUpdateHistory(this.quiz.navigation.history);
-      },
-    },
     data: () => ({
-      quiz: clone(initialQuiz),
+      quiz: null,
     }),
-    computed: {
-      currentStep() {
-        return this.quiz.data[this.quiz.navigation.current];
-      },
-      currentStepIndex() {
-        return this.quiz.navigation.history.lastIndexOf(this.quiz.navigation.current);
-      },
-      previousStepId() {
-        return this.quiz.navigation.history[this.currentStepIndex - 1];
-      },
-      isStepWithValidation() {
-        return JSON.stringify(this.currentStep).includes('validations');
-      },
-    },
-    methods: {
-      getUpdateHistoryMethodName: (ahead) => ahead ? 'push' : 'pop',
-      updateHistory(id, method) {
-        this.quiz.navigation.history[method](id);
-      },
-      updateCurrentStep(stepId) {
-        this.quiz.navigation.current = stepId;
-      },
-      updateStep(stepId, ahead = true) {
-        const method = this.getUpdateHistoryMethodName(ahead);
-        this.updateHistory(stepId, method);
-        this.updateCurrentStep(stepId);
-      },
-      resetQuiz() {
-        this.quiz = clone(initialQuiz);
-      },
-      handleContetPartUpdate(payload) {
-        this.quizUpdateModel({
-          id: this.currentStep.id,
-          heading: this.currentStep.content.data.heading.content.data.text.main,
-          payload,
-        });
-      },
-    },
     mounted() {
-      this.$root.$on('quiz:update-step', this.updateStep);
-      this.$root.$on('content-part:updated', this.handleContetPartUpdate);
-      this.quizUpdateHistory(this.quiz.navigation.history);
-    },
-    beforeDestroy() {
-      this.$root.$off('quiz:update-step', this.updateStep);
-      this.$root.$off('content-part:updated', this.handleContetPartUpdate);
-    },
-    beforeRouteEnter(_, from, next) {
-      next((vm) => {
-        if (from.name === ROUTE_NAMES.QUIZ_STEP_LAST) {
-          vm.resetQuiz();
-        }
-      });
+      axios.get(`/quizes/${this.$route.params.url}`)
+        .then(({ data }) => {
+          this.setQuizId(data._id);
+          const quiz = {
+            navigation: {
+              current: data.steps[0].id,
+              history: [data.steps[0].id],
+            },
+            data: data.steps.reduce((result, step) => {
+              const mappedStep = {
+                id: step.id,
+                content: {
+                  type: step.kind,
+                  data: {},
+                },
+                navigation: {},
+              };
+
+              if (step.heading.text) {
+                mappedStep.content.data.heading = {
+                  content: {
+                    data: {
+                      text: {
+                        main: step.heading.text.main,
+                      },
+                    },
+                  },
+                };
+              }
+
+              if (step.heading.text.sub) {
+                mappedStep.content.data.heading.content.data.text.sub = step.heading.text.sub;
+              }
+
+              if (step.heading.hint) {
+                mappedStep.content.data.heading.hint = {
+                  content: {
+                    type: step.heading.hint.kind,
+                    data: {
+                      text: [step.heading.hint.data.text],
+                    },
+                  },
+                };
+              }
+
+              if (step.kind === 'buttons-list') {
+                mappedStep.content.data.body = {
+                  content: {
+                    buttons: step.body.buttons.map((button) => ({
+                      navigation: { ...button.navigation },
+                      data: {
+                        content: {
+                          text: button.text,
+                        },
+                      },
+                    })),
+                  },
+                };
+              }
+
+              if (step.kind === 'single-input') {
+                mappedStep.content.data.body = {
+                  content: {
+                    placeholder: step.body.placeholder,
+                  },
+                };
+              }
+
+               if (step.kind === 'single-textarea') {
+                mappedStep.content.data.body = {
+                  content: {
+                    placeholder: step.body.placeholder,
+                  },
+                };
+              }
+
+              if (step.kind === 'multiple-fields') {
+                mappedStep.content.data.body = {
+                  content: step.body.fields.map((field) => ({
+                    type: field.kind,
+                    data: field.data,
+                  })),
+                };
+              }
+
+              if (step.kind === 'checkbox-list') {
+                mappedStep.content.data.body = {
+                  options: {
+                    cols: step.body.cols,
+                  },
+                  content: {
+                    checkboxes: [...step.body.checkboxes],
+                  },
+                };
+
+                if (step.body.additional) {
+                  mappedStep.content.data.body.content.additional = [...step.body.additional];
+                }
+              }
+
+              if (step.navigation) {
+                mappedStep.navigation = { ...step.navigation };
+              }
+
+              return {
+                ...result,
+                [step.id]: mappedStep,
+              };
+            }, {}),
+          };
+
+          this.quiz = quiz;
+        });
     },
   };
 </script>
-
-<style lang="scss">
-  .quiz {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    align-items: center;
-    padding: 130px $padding-mobile-x;
-
-    @media(min-width: $sm) {
-      padding: 140px $padding-desktop-x;
-    }
-  }
-</style>

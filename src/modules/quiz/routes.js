@@ -8,7 +8,7 @@ const QuizAutoreply = () => import(/* webpackChunkName: 'quiz.autoreply' */ '@mo
 export default [
   configureDefaultLayout({
     name: ROUTE_NAMES.QUIZ,
-    path: '/quiz',
+    path: '/:url',
     component: Quiz,
   }),
   configureDefaultLayout({
