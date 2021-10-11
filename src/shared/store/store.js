@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { format } from 'date-fns';
-import ru from 'date-fns/locale/ru';
+// import { format } from 'date-fns';
+// import ru from 'date-fns/locale/ru';
 import { mutations, actions, FOOTER_KIND_SMALL, FOOTER_KIND_DEFAULT } from '@shared/store/constants';
 export default {
   namespaced: true,
@@ -36,7 +36,7 @@ export default {
   },
   actions: {
     [actions.QUIZ_SEND_RESULT]: ({ state }, { applicationNumber, quizId }) => {
-      const date = format(new Date(), 'MM MMMM yyyy года в HH:mm', { locale: ru });
+      // const date = format(new Date(), 'MM MMMM yyyy года в HH:mm', { locale: ru });
       const answers = state.quiz.history.map((stepId) => (
         state.quiz.model[stepId] ? ({
           ...state.quiz.model[stepId],
@@ -47,7 +47,7 @@ export default {
       ));
 
       return new Promise((resolve, reject) => {
-        axios.post('/results', { data: { applicationNumber, date, answers, quizId } })
+        axios.post('/results', { applicationNumber, date: new Date(), answers, quiz: quizId })
           .then((res) => console.dir(res.data), resolve())
           .catch((error) => console.dir(error), reject());
       });
