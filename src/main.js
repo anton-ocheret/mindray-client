@@ -9,8 +9,10 @@ import App from '@core/app';
 import '@/registerServiceWorker';
 import '@scss/index.scss';
 
-Vue.config.productionTip = false
-Vue.use(PortalVue)
+Vue.config.productionTip = false;
+Vue.use(PortalVue);
+
+// test comment for clear cache to delete
 
 new Vue({
   router,
