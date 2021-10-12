@@ -9,8 +9,8 @@ import App from '@core/app';
 import '@/registerServiceWorker';
 import '@scss/index.scss';
 
-Vue.config.productionTip = false;
-Vue.use(PortalVue);
+Vue.config.productionTip = false
+Vue.use(PortalVue)
 
 new Vue({
   router,
