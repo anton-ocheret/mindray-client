@@ -12,6 +12,8 @@ import '@scss/index.scss';
 Vue.config.productionTip = false;
 Vue.use(PortalVue);
 
+// test comment for clear cache to delete
+
 new Vue({
   router,
   store,
