@@ -15,7 +15,7 @@
       quiz: null,
     }),
     mounted() {
-      axios.get(`/quizes/${this.$route.params.url}`)
+      axios.get(`${process.env.VUE_APP_API_URL}/quizes/${this.$route.params.url}`)
         .then(({ data }) => {
           this.setQuizId(data._id);
           const quiz = {

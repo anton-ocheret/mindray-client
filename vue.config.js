@@ -18,6 +18,6 @@ module.exports = {
     },
   },
   devServer: {
-    proxy: process.env.VUE_APP_API_URL,
+    proxy: 'https://warm-headland-96314.herokuapp.com/api/v1',
   },
 };

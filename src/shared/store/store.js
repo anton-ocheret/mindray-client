@@ -47,7 +47,7 @@ export default {
       ));
 
       return new Promise((resolve, reject) => {
-        axios.post('/results', { applicationNumber, date: new Date(), answers, quiz: quizId })
+        axios.post(`${process.env.VUE_APP_API_URL}/results`, { applicationNumber, date: new Date(), answers, quiz: quizId })
           .then((res) => console.dir(res.data), resolve())
           .catch((error) => console.dir(error), reject());
       });
